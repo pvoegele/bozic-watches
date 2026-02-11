@@ -82,10 +82,15 @@ export default async function ProductPage({ params }: PageProps) {
             </h1>
 
             {/* Status Badge */}
-            <div>
+            <div className="flex items-center gap-4">
               <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${statusColors[watch.availabilityStatus || 'available']}`}>
                 {statusLabels[watch.availabilityStatus || 'available']}
               </span>
+              {watch.showPrice && watch.price && (
+                <p className="text-3xl font-serif text-luxury-charcoal">
+                  €{parseInt(watch.price).toLocaleString('de-DE')}
+                </p>
+              )}
             </div>
 
             {/* Description */}

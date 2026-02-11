@@ -65,6 +65,15 @@ export default function WatchCard({ watch }: WatchCardProps) {
             )}
           </div>
 
+          {/* Price */}
+          {watch.showPrice && watch.price && (
+            <div className="mt-4">
+              <p className="text-2xl font-serif text-luxury-charcoal">
+                €{parseInt(watch.price).toLocaleString('de-DE')}
+              </p>
+            </div>
+          )}
+
           {/* CTA */}
           <div className="mt-4 pt-4 border-t border-luxury-sand">
             <span className="text-luxury-charcoal text-sm font-semibold group-hover:text-luxury-gold transition-colors">
