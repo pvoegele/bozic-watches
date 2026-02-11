@@ -1,0 +1,8 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#E8E4DC"/>
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#A39A8B" stroke-width="8"/>
+  <circle cx="200" cy="200" r="4" fill="#2B2826"/>
+  <line x1="200" y1="200" x2="200" y2="120" stroke="#2B2826" stroke-width="4" stroke-linecap="round"/>
+  <line x1="200" y1="200" x2="260" y2="200" stroke="#B8964A" stroke-width="3" stroke-linecap="round"/>
+  <text x="200" y="350" font-family="serif" font-size="14" fill="#A39A8B" text-anchor="middle">Luxury Watch</text>
+</svg>
