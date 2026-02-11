@@ -9,13 +9,28 @@ export default async function Home() {
   return (
     <div className="bg-luxury-cream">
       {/* Hero Section */}
-      <section className="relative bg-luxury-sand py-24 md:py-32">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-luxury-sand py-24 md:py-32 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero/video/hero_video.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-serif text-luxury-charcoal mb-6">
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">
               Exklusive Luxusuhren
             </h1>
-            <p className="text-lg md:text-xl text-luxury-stone mb-8">
+            <p className="text-lg md:text-xl text-white mb-8">
               Entdecken Sie unsere handverlesene Auswahl an außergewöhnlichen Zeitmessern. 
               Jede Uhr erzählt ihre eigene Geschichte.
             </p>
