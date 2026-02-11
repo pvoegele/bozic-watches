@@ -64,14 +64,14 @@ export default function WatchCard({ watch }: WatchCardProps) {
             )}
           </div>
 
-          {/* Price */}
-          {watch.showPrice && watch.price && (
+          {/* Price - Hidden as per issue #8 */}
+          {/* {watch.showPrice && watch.price && (
             <div className="pt-4 border-t border-luxury-stone/10">
               <p className="text-2xl font-sans font-bold text-luxury-black tracking-tight">
                 €{parseInt(watch.price).toLocaleString('de-DE')}
               </p>
             </div>
-          )}
+          )} */}
 
           {/* CTA - Minimal */}
           <div className="pt-6">
