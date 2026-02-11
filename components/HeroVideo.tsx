@@ -19,7 +19,8 @@ export default function HeroVideo() {
     };
 
     // If video is already loaded, apply opacity immediately
-    if (video.readyState >= 3) {
+    // readyState >= HAVE_FUTURE_DATA (3) means enough data is available to start playing
+    if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
       handleLoadedData();
     }
 
