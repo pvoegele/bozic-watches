@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
           {/* Company Info */}
           <div className="space-y-6">
-            <h3 className="text-3xl font-display font-bold tracking-ultra-wide text-luxury-gold mb-6">BOZIC</h3>
+            <h3 className="text-3xl font-sans font-black tracking-ultra-wide text-luxury-gold mb-6">BOZIC</h3>
             <p className="text-luxury-pearl/80 text-sm leading-relaxed">
               Ihr vertrauensvoller Partner für exklusive Luxusuhren. 
               Seit Jahren verbinden wir Tradition mit Expertise.

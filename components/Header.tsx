@@ -7,7 +7,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="group">
-            <h1 className="text-3xl font-display font-bold text-luxury-black tracking-ultra-wide transition-colors duration-300 group-hover:text-luxury-gold">
+            <h1 className="text-3xl font-sans font-black text-luxury-black tracking-ultra-wide transition-colors duration-300 group-hover:text-luxury-gold">
               BOZIC
             </h1>
           </Link>

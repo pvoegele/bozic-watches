@@ -10,7 +10,7 @@ export default async function UhrenPage() {
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-6">
-            <h1 className="text-6xl md:text-7xl font-display font-bold text-luxury-black tracking-tight">
+            <h1 className="text-6xl md:text-7xl font-sans font-black text-luxury-black tracking-tight">
               Unsere Uhren
             </h1>
             <p className="text-xl text-luxury-stone leading-relaxed tracking-wide">

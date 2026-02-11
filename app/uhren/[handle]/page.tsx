@@ -80,7 +80,7 @@ export default async function ProductPage({ params }: PageProps) {
               )}
 
               {/* Title */}
-              <h1 className="text-5xl md:text-6xl font-display font-bold text-luxury-black leading-tight tracking-tight">
+              <h1 className="text-5xl md:text-6xl font-sans font-bold text-luxury-black leading-tight tracking-tight">
                 {watch.title}
               </h1>
 
@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: PageProps) {
                   {statusLabels[watch.availabilityStatus || 'available']}
                 </span>
                 {watch.showPrice && watch.price && (
-                  <p className="text-4xl font-display font-bold text-luxury-black tracking-tight">
+                  <p className="text-4xl font-sans font-bold text-luxury-black tracking-tight">
                     €{parseInt(watch.price).toLocaleString('de-DE')}
                   </p>
                 )}
@@ -105,7 +105,7 @@ export default async function ProductPage({ params }: PageProps) {
 
               {/* Specifications */}
               <div className="pt-8 border-t border-luxury-stone/20 space-y-6">
-                <h3 className="text-2xl font-serif text-luxury-black mb-6">
+                <h3 className="text-2xl font-sans font-bold text-luxury-black mb-6">
                   Technische Daten
                 </h3>
                 <dl className="space-y-4">

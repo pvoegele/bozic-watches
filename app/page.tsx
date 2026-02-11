@@ -20,7 +20,7 @@ export default async function Home() {
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <div className="max-w-5xl mx-auto space-y-12">
-            <h1 className="text-6xl md:text-8xl font-display font-bold text-luxury-black tracking-tight leading-none">
+            <h1 className="text-6xl md:text-8xl font-sans font-black text-luxury-black tracking-tight leading-none">
               Exklusive
               <span className="block text-luxury-gold mt-4">Luxusuhren</span>
             </h1>
@@ -60,7 +60,7 @@ export default async function Home() {
       <section className="py-32 bg-luxury-smoke">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-luxury-black mb-6 tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-sans font-black text-luxury-black mb-6 tracking-tight">
               Aktuelle Highlights
             </h2>
             <p className="text-lg text-luxury-stone max-w-2xl mx-auto tracking-wide">
@@ -92,7 +92,7 @@ export default async function Home() {
       <section className="py-32 bg-gradient-luxury">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-luxury-cream mb-6 tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-sans font-black text-luxury-cream mb-6 tracking-tight">
               Ankauf in 3 Schritten
             </h2>
             <p className="text-lg text-luxury-pearl/70 max-w-2xl mx-auto tracking-wide">
@@ -103,10 +103,10 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-6xl mx-auto">
             {/* Step 1 */}
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-3xl font-display font-bold mx-auto">
+              <div className="w-20 h-20 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-3xl font-sans font-black mx-auto">
                 1
               </div>
-              <h3 className="text-2xl font-serif text-luxury-cream">
+              <h3 className="text-2xl font-sans font-bold text-luxury-cream">
                 Kontaktaufnahme
               </h3>
               <p className="text-luxury-pearl/70 leading-relaxed">
@@ -116,10 +116,10 @@ export default async function Home() {
 
             {/* Step 2 */}
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-3xl font-display font-bold mx-auto">
+              <div className="w-20 h-20 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-3xl font-sans font-black mx-auto">
                 2
               </div>
-              <h3 className="text-2xl font-serif text-luxury-cream">
+              <h3 className="text-2xl font-sans font-bold text-luxury-cream">
                 Bewertung
               </h3>
               <p className="text-luxury-pearl/70 leading-relaxed">
@@ -129,10 +129,10 @@ export default async function Home() {
 
             {/* Step 3 */}
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-3xl font-display font-bold mx-auto">
+              <div className="w-20 h-20 border-2 border-luxury-gold flex items-center justify-center text-luxury-gold text-3xl font-sans font-black mx-auto">
                 3
               </div>
-              <h3 className="text-2xl font-serif text-luxury-cream">
+              <h3 className="text-2xl font-sans font-bold text-luxury-cream">
                 Abwicklung
               </h3>
               <p className="text-luxury-pearl/70 leading-relaxed">
@@ -156,7 +156,7 @@ export default async function Home() {
       <section className="py-32 bg-luxury-cream">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-10">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-luxury-black tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-sans font-black text-luxury-black tracking-tight">
               Haben Sie Fragen?
             </h2>
             <p className="text-xl text-luxury-stone leading-relaxed max-w-2xl mx-auto">

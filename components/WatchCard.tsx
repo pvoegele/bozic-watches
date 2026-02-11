@@ -50,7 +50,7 @@ export default function WatchCard({ watch }: WatchCardProps) {
           )}
 
           {/* Title */}
-          <h3 className="text-xl font-serif text-luxury-black leading-tight group-hover:text-luxury-gold transition-colors duration-300 min-h-[3.5rem]">
+          <h3 className="text-xl font-sans font-bold text-luxury-black leading-tight group-hover:text-luxury-gold transition-colors duration-300 min-h-[3.5rem]">
             {watch.title}
           </h3>
 
@@ -67,7 +67,7 @@ export default function WatchCard({ watch }: WatchCardProps) {
           {/* Price */}
           {watch.showPrice && watch.price && (
             <div className="pt-4 border-t border-luxury-stone/10">
-              <p className="text-2xl font-serif text-luxury-black tracking-tight">
+              <p className="text-2xl font-sans font-bold text-luxury-black tracking-tight">
                 €{parseInt(watch.price).toLocaleString('de-DE')}
               </p>
             </div>

@@ -36,9 +36,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
-        display: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['Geist Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        serif: ['Geist Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Geist Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',
