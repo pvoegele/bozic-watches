@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import WatchCard from '@/components/WatchCard';
+import HeroVideo from '@/components/HeroVideo';
 import { getAllProducts } from '@/lib/shopify';
 
 export default async function Home() {
@@ -11,22 +12,7 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Video Background - Only shows if video exists */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-0"
-          onLoadedData={(e) => {
-            (e.target as HTMLVideoElement).classList.remove('opacity-0');
-            (e.target as HTMLVideoElement).classList.add('opacity-30');
-          }}
-          onError={(e) => {
-            (e.target as HTMLVideoElement).style.display = 'none';
-          }}
-        >
-          <source src="/Hero-video/hero-background.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
 
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/40 via-luxury-black/20 to-luxury-cream"></div>
