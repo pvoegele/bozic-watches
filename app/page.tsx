@@ -15,11 +15,11 @@ export default async function Home() {
         <HeroVideo />
 
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/40 via-luxury-black/20 to-luxury-cream"></div>
+        <div className="absolute bg-gradient-to-b from-luxury-black/20 via-luxury-black/20 to-luxury-cream"></div>
 
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
-          <div className="max-w-5xl mx-auto space-y-12">
+          <div className="max-w-5xl bg-luxury-cream rounded-lg mx-auto space-y-12">
             <h1 className="text-6xl md:text-8xl font-sans font-black text-luxury-black tracking-tight leading-none">
               Exklusive
               <span className="block text-luxury-gold mt-4">Luxusuhren</span>

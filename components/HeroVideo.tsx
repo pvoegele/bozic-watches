@@ -7,7 +7,7 @@ export default function HeroVideo() {
       loop 
       muted 
       playsInline
-      className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+      className="w-full h-full object-cover opacity-50 duration-1000"
       onLoadedData={(e) => {
         (e.target as HTMLVideoElement).classList.remove('opacity-0');
         (e.target as HTMLVideoElement).classList.add('opacity-30');
@@ -16,7 +16,7 @@ export default function HeroVideo() {
         (e.target as HTMLVideoElement).style.display = 'none';
       }}
     >
-      <source src="/Hero-video/hero-background.mp4" type="video/mp4" />
+      <source src="hero\video\hero_video.mp4" type="video/mp4" />
     </video>
   );
 }
