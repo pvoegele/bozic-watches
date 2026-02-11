@@ -7,7 +7,7 @@ export default function HeroVideo() {
       loop 
       muted 
       playsInline
-      className="w-full h-full object-cover opacity-50 duration-1000"
+      className="inset-0 absolute  w-full h-full object-cover opacity-50 duration-1000"
       onLoadedData={(e) => {
         (e.target as HTMLVideoElement).classList.remove('opacity-0');
         (e.target as HTMLVideoElement).classList.add('opacity-30');
