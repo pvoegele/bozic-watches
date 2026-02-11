@@ -16,6 +16,7 @@ export default async function Home() {
           loop
           muted
           playsInline
+          aria-label="Background video showcasing luxury watches"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero/video/hero_video.mp4" type="video/mp4" />
