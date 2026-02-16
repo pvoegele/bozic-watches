@@ -20,7 +20,7 @@ export default async function Home() {
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
           <div className="max-w-5xl bg-transparent rounded-lg mx-auto space-y-12">
-            
+
             <h1 className="text-6xl md:text-8xl font-sans font-black tracking-tight leading-none text-white drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)]">
               Exklusive
               <span className="block text-white mt-4 drop-shadow-[0_4px_32px_rgba(0,0,0,1)]">Luxusuhren</span>
@@ -29,16 +29,34 @@ export default async function Home() {
               Entdecken Sie unsere handverlesene Auswahl an außergewöhnlichen Zeitmessern.
               <span className="block mt-2 text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">Jede Uhr erzählt ihre eigene Geschichte.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+            
+            {/* Mobile Scroll indicator inside CTA section */}
+            <div className="w-full flex flex-col items-center sm:hidden mb-2 -mt-2">
+              <div className="flex flex-col items-center gap-1 text-luxury-stone animate-bounce text-white">
+                <span className="text-xs uppercase tracking-widest">Scroll</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8 w-full">
               <Link 
                 href="/uhren"
-                className="group px-12 py-5 border-2 border-luxury-gold text-white text-sm uppercase tracking-widest font-medium hover:bg-luxury-gold hover:text-white transition-all duration-500 min-w-[240px] drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
+                className="group px-8 py-4 sm:px-12 sm:py-5 border-2 border-luxury-gold text-white text-base sm:text-sm uppercase tracking-widest font-medium sm:font-medium font-bold hover:bg-luxury-gold hover:text-white transition-all duration-500 min-w-[200px] sm:min-w-[240px] w-full sm:w-auto bg-black/30 sm:bg-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.96)]"
+                style={{
+                  boxShadow:
+                    '0 2px 12px 0 rgba(0,0,0,0.84)',
+                }}
               >
                 Uhren entdecken
               </Link>
               <Link 
                 href="/ankauf"
-                className="group px-12 py-5 text-white text-sm uppercase tracking-widest font-medium hover:text-luxury-gold transition-all duration-300 min-w-[240px] drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
+                className="group px-8 py-4 sm:px-12 sm:py-5 border-2 border-white text-white text-base sm:text-sm uppercase tracking-widest font-medium sm:font-medium font-bold hover:text-luxury-gold hover:border-luxury-gold hover:bg-white/5 transition-all duration-300 min-w-[200px] sm:min-w-[240px] w-full sm:w-auto bg-black/30 sm:bg-transparent drop-shadow-[0_2px_12px_rgba(0,0,0,0.96)]"
+                style={{
+                  boxShadow:
+                    '0 2px 12px 0 rgba(0,0,0,0.84)',
+                }}
               >
                 Uhr verkaufen
               </Link>
@@ -46,8 +64,8 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10">
+        {/* Desktop Scroll Indicator ONLY for md+ */}
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 hidden sm:block">
           <div className="flex flex-col items-center gap-3 text-luxury-stone animate-bounce text-white">
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,10 +182,10 @@ export default async function Home() {
               Unser Expertenteam steht Ihnen gerne zur Verfügung. 
               Kontaktieren Sie uns für eine persönliche Beratung.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8 w-full">
               <Link 
                 href="/kontakt"
-                className="px-12 py-5 border-2 border-luxury-gold text-luxury-gold text-sm uppercase tracking-widest font-medium hover:bg-luxury-gold hover:text-white transition-all duration-500 min-w-[240px]"
+                className="px-8 py-4 sm:px-12 sm:py-5 border-2 border-luxury-gold text-luxury-gold text-base sm:text-sm uppercase tracking-widest font-medium sm:font-medium font-bold hover:bg-luxury-gold hover:text-white transition-all duration-500 min-w-[200px] sm:min-w-[240px] w-full sm:w-auto"
               >
                 Kontakt aufnehmen
               </Link>
@@ -175,7 +193,7 @@ export default async function Home() {
                 href="https://wa.me/49XXXXXXXXX"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-12 py-5 bg-green-600 text-white text-sm uppercase tracking-widest font-medium hover:bg-green-700 transition-all duration-300 min-w-[240px]"
+                className="px-8 py-4 sm:px-12 sm:py-5 bg-green-600 text-white text-base sm:text-sm uppercase tracking-widest font-medium sm:font-medium font-bold hover:bg-green-700 transition-all duration-300 min-w-[200px] sm:min-w-[240px] w-full sm:w-auto"
               >
                 WhatsApp Chat
               </a>
