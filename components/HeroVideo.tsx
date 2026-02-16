@@ -3,6 +3,7 @@
 export default function HeroVideo() {
   return (
     <video 
+      id="header-video"
       autoPlay 
       loop 
       muted 

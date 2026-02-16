@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   description: "Ihr vertrauensvoller Partner für exklusive Luxusuhren. Entdecken Sie unsere handverlesene Auswahl an Rolex, Patek Philippe, Omega und mehr.",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
