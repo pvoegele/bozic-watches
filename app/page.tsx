@@ -14,30 +14,31 @@ export default async function Home() {
         {/* Video Background - Only shows if video exists */}
         <HeroVideo />
 
-        {/* Overlay for better text readability */}
-        <div className="absolute bg-gradient-to-b from-luxury-black/20 via-luxury-black/20 to-luxury-cream"></div>
+        {/* Strong dark overlay for best readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/40 to-luxury-cream/70 pointer-events-none" />
 
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-8 text-center">
-          <div className="max-w-5xl bg-luxury-cream rounded-lg mx-auto space-y-12">
-            <h1 className="text-6xl md:text-8xl font-sans font-black text-luxury-black tracking-tight leading-none">
+          <div className="max-w-5xl bg-transparent rounded-lg mx-auto space-y-12">
+            
+            <h1 className="text-6xl md:text-8xl font-sans font-black tracking-tight leading-none text-white drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)]">
               Exklusive
-              <span className="block text-luxury-gold mt-4">Luxusuhren</span>
+              <span className="block text-white mt-4 drop-shadow-[0_4px_32px_rgba(0,0,0,1)]">Luxusuhren</span>
             </h1>
-            <p className="text-xl md:text-2xl text-luxury-charcoal/80 max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-[0_2px_16px_rgba(0,0,0,0.85)]">
               Entdecken Sie unsere handverlesene Auswahl an außergewöhnlichen Zeitmessern.
-              <span className="block mt-2">Jede Uhr erzählt ihre eigene Geschichte.</span>
+              <span className="block mt-2 text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">Jede Uhr erzählt ihre eigene Geschichte.</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
               <Link 
                 href="/uhren"
-                className="group px-12 py-5 border-2 border-luxury-gold text-luxury-gold text-sm uppercase tracking-widest font-medium hover:bg-luxury-gold hover:text-white transition-all duration-500 min-w-[240px]"
+                className="group px-12 py-5 border-2 border-luxury-gold text-white text-sm uppercase tracking-widest font-medium hover:bg-luxury-gold hover:text-white transition-all duration-500 min-w-[240px] drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
               >
                 Uhren entdecken
               </Link>
               <Link 
                 href="/ankauf"
-                className="group px-12 py-5 text-luxury-charcoal text-sm uppercase tracking-widest font-medium hover:text-luxury-gold transition-all duration-300 min-w-[240px]"
+                className="group px-12 py-5 text-white text-sm uppercase tracking-widest font-medium hover:text-luxury-gold transition-all duration-300 min-w-[240px] drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
               >
                 Uhr verkaufen
               </Link>
@@ -47,7 +48,7 @@ export default async function Home() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center gap-3 text-luxury-stone animate-bounce">
+          <div className="flex flex-col items-center gap-3 text-luxury-stone animate-bounce text-white">
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
