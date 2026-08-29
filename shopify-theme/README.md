@@ -14,6 +14,7 @@ Ankauf-Formular, Warenkorb, Suche und die Konzept-Seite als eigene Vorlage.
 | `preview/theme-preview.html` | Statische Vorschau der Shop-Screens (Home, Produkt, Warenkorb) — im Browser öffnen |
 | `preview/konzept-preview.html` | Statische Vorschau der Konzept-Seite (visuelles Master der Section) |
 | `build-liquid.py` | Generiert `theme/sections/konzept.liquid` aus der Konzept-Preview |
+| `publish-preview.py` | Kopiert beide Vorschauen nach `public/`, damit sie über die Vercel-URL erreichbar sind (`/konzept.html`, `/shop-vorschau.html`) |
 
 ## Installation
 

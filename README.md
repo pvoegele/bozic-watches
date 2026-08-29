@@ -11,6 +11,11 @@ Beyond the Next.js showroom app (deployed via Vercel), this repository contains:
 - [`DESIGN.md`](DESIGN.md) — design-system documentation for the theme (paper/ink/signal-red, Hanken Grotesk, rule-work)
 - [`PRODUCT.md`](PRODUCT.md) — product truth the theme and Konzept page are built from
 
+Both designs are also served statically by the deployed site, so they can be
+viewed without a Shopify store: **`/konzept.html`** (the concept page) and
+**`/shop-vorschau.html`** (the shop screens). They are generated from
+`shopify-theme/preview/` via `python3 shopify-theme/publish-preview.py`.
+
 ## 🎨 Features
 
 - **Luxury Design**: Elegant, minimalist design inspired by premium watch brands
