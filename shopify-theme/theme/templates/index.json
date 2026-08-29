@@ -1,0 +1,16 @@
+{
+    "sections": {
+        "hero": {
+            "type": "swiss-hero",
+            "settings": {}
+        },
+        "featured": {
+            "type": "featured-watches",
+            "settings": {}
+        }
+    },
+    "order": [
+        "hero",
+        "featured"
+    ]
+}

@@ -1,0 +1,24 @@
+<header class="sw-header">
+  <div class="sw-wrap">
+    <div class="sw-header-bar">
+      <a class="sw-logo" href="{{ routes.root_url }}">{{ shop.name | default: 'BOZIC Watches' }}<b>.</b></a>
+      <nav class="sw-nav" aria-label="Hauptnavigation">
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- endfor -%}
+      </nav>
+      <a class="sw-cart" href="{{ routes.cart_url }}">
+        Warenkorb <span class="sw-count">({{ cart.item_count }})</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Kopfzeile",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menü", "default": "main-menu" }
+  ]
+}
+{% endschema %}

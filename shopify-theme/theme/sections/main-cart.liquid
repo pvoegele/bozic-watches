@@ -1,0 +1,66 @@
+<section class="sw-sec">
+  <div class="sw-wrap">
+    <div class="sw-head">
+      <h1 class="sw-h2">Warenkorb</h1>
+      <span class="sw-label sw-label--dim">{{ cart.item_count }} Artikel</span>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        <div style="overflow-x: auto;">
+          <table class="sw-cart-table" style="min-width: 34rem;">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2">Uhr</th>
+                <th scope="col">Menge</th>
+                <th scope="col" class="sw-right">Preis</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for item in cart.items -%}
+                <tr>
+                  <td style="width: 5.5rem;">
+                    {%- if item.image -%}
+                      <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="90" height="90">
+                    {%- endif -%}
+                  </td>
+                  <td>
+                    <a href="{{ item.url }}" style="font-weight: 700; text-decoration: none;">{{ item.product.title }}</a><br>
+                    <a class="sw-cart-remove" href="{{ item.url_to_remove }}">Entfernen</a>
+                  </td>
+                  <td>
+                    <label class="sw-skip" for="Qty{{ forloop.index }}">Menge</label>
+                    <input class="sw-cart-qty" id="Qty{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" max="1">
+                  </td>
+                  <td class="sw-right">{{ item.final_line_price | money }}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sw-cart-footer">
+          <div>
+            <span class="sw-label sw-label--dim">Zwischensumme</span><br>
+            <span class="sw-cart-total">{{ cart.total_price | money }}</span>
+            <p class="sw-cart-note">Jede Uhr ist ein Unikat und nur einmal verfügbar. Ab 3.000 € bieten wir zusätzlich Zahlung per Banküberweisung an — wählbar im Checkout.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button type="submit" class="sw-btn sw-btn--ghost">Aktualisieren</button>
+            <button type="submit" name="checkout" class="sw-btn sw-btn--red">Zur Kasse</button>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="sw-empty">
+        <h2>Ihr Warenkorb ist leer</h2>
+        <p>Jede Uhr in unserem Bestand ist geprüft, fotografiert und nur einmal verfügbar.</p>
+        <a class="sw-btn sw-btn--red" href="{{ routes.all_products_collection_url }}">Uhren entdecken</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Warenkorb", "settings": [] }
+{% endschema %}

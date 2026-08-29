@@ -1,0 +1,13 @@
+<section class="sw-sec">
+  <div class="sw-wrap">
+    <div class="sw-head">
+      <h1 class="sw-h2">{{ article.title }}</h1>
+      <span class="sw-label sw-label--dim">{{ article.published_at | date: '%d.%m.%Y' }}</span>
+    </div>
+    <div class="sw-rte">{{ article.content }}</div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Artikel", "settings": [] }
+{% endschema %}

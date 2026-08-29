@@ -102,7 +102,7 @@ liquid = (
     + schema
 )
 
-out = base / "sections" / "konzept.liquid"
+out = base / "theme" / "sections" / "konzept.liquid"
 out.write_text(liquid, encoding="utf-8")
 leftover = re.findall(r"Vom Showroom|29\.08\.2026|/pages/kontakt\"|BOZIC Watches<", body)
 print(f"written {out} ({len(liquid)} bytes); un-templated leftovers: {leftover}")

@@ -1,0 +1,46 @@
+{% comment %}
+  Produktkarte im Linienraster.
+  Verwendung: {% render 'product-card', product: product %}
+{% endcomment %}
+{%- liquid
+  assign status = product.metafields.custom.availability_status.value | default: 'available'
+  unless product.available
+    assign status = 'sold'
+  endunless
+  assign sales_mode = product.metafields.custom.sales_mode.value | default: 'checkout'
+  assign show_price = true
+  if product.metafields.custom.show_price.value == false or sales_mode == 'auf_anfrage'
+    assign show_price = false
+  endif
+  assign brand = product.metafields.custom.brand.value | default: product.vendor
+-%}
+<a class="sw-card" href="{{ product.url }}">
+  {%- if status == 'sold' -%}
+    <span class="sw-flag">Verkauft</span>
+  {%- elsif status == 'reserved' -%}
+    <span class="sw-flag sw-flag--red">Reserviert</span>
+  {%- endif -%}
+  <div class="sw-card-media">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 900 }} 900w"
+        sizes="(max-width: 480px) 90vw, (max-width: 820px) 45vw, 22vw"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="{{ product.featured_image.width }}"
+        height="{{ product.featured_image.height }}">
+    {%- else -%}
+      {% render 'swiss-disc' %}
+    {%- endif -%}
+  </div>
+  {%- if brand != blank -%}<span class="sw-label sw-label--red">{{ brand }}</span>{%- endif -%}
+  <span class="sw-card-title">{{ product.title }}</span>
+  <span class="sw-card-price">
+    {%- if show_price -%}
+      {{ product.price | money }}
+    {%- else -%}
+      <span class="sw-dim">Preis auf Anfrage</span>
+    {%- endif -%}
+  </span>
+</a>

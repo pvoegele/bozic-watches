@@ -1,0 +1,57 @@
+<section class="sw-sec" style="padding-top: 2rem;">
+  <div class="sw-wrap">
+    <div style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem 4rem; align-items: center;" class="sw-hero-grid">
+      <div>
+        <h1 class="sw-h1">{{ section.settings.title }} <span class="sw-rot">{{ section.settings.title_accent }}</span></h1>
+        {%- if section.settings.subtitle != blank -%}
+          <p class="sw-lead" style="margin-top: 1.75rem; font-size: clamp(1.0625rem, 1.7vw, 1.25rem); max-width: 36rem;">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem;">
+          {%- if section.settings.cta1_label != blank -%}
+            <a class="sw-btn sw-btn--red" href="{{ section.settings.cta1_url | default: routes.all_products_collection_url }}">{{ section.settings.cta1_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.cta2_label != blank -%}
+            <a class="sw-btn sw-btn--ghost" href="{{ section.settings.cta2_url }}">{{ section.settings.cta2_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+      <figure style="margin: 0; display: grid; place-items: center;">
+        <div style="position: relative; width: min(22rem, 74vw); aspect-ratio: 1;">
+          {% render 'swiss-disc' %}
+          {%- if section.settings.video_url != blank -%}
+            <video autoplay muted loop playsinline preload="metadata"
+              src="{{ section.settings.video_url }}"
+              style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: circle(49.2%); filter: grayscale(1) contrast(1.06);"></video>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.caption != blank -%}
+          <figcaption class="sw-label sw-label--dim" style="margin-top: 0.8rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); width: 100%;">{{ section.settings.caption }}</figcaption>
+        {%- endif -%}
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 900px) {
+    .sw-hero-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Swiss Hero",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titel", "default": "Exklusive Uhren." },
+    { "type": "text", "id": "title_accent", "label": "Akzentwort (rot)", "default": "Geprüft. Präzise." },
+    { "type": "textarea", "id": "subtitle", "label": "Untertitel", "default": "Handverlesene Zeitmesser mit Echtheitsprüfung, fairer Bewertung beim Ankauf und versichertem Versand." },
+    { "type": "text", "id": "cta1_label", "label": "Button 1 – Text", "default": "Uhren entdecken" },
+    { "type": "url", "id": "cta1_url", "label": "Button 1 – Ziel" },
+    { "type": "text", "id": "cta2_label", "label": "Button 2 – Text", "default": "Uhr verkaufen" },
+    { "type": "url", "id": "cta2_url", "label": "Button 2 – Ziel" },
+    { "type": "text", "id": "video_url", "label": "Hero-Video-URL (leer = rote Scheibe)", "info": "Läuft automatisch schwarzweiß im Kreis." },
+    { "type": "text", "id": "caption", "label": "Bildunterschrift", "default": "Abb. 01 · 10.08 Uhr" }
+  ],
+  "presets": [ { "name": "Swiss Hero" } ]
+}
+{% endschema %}
