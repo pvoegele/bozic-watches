@@ -384,14 +384,19 @@
 @media (max-width: 760px) { .bz-arch-row--2, .bz-arch-row--3 { grid-template-columns: 1fr; } }
 
 .bz-node { padding: 1.5rem 1.6rem; }
-.bz-node .bz-cap { display: block; margin-bottom: 0.6rem; }
 .bz-node h3 {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 1.1875rem;
   color: var(--ivory);
   margin-bottom: 0.35rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
 }
+.bz-node h3 .bz-cap { font-weight: 500; }
 .bz-node p { margin: 0; font-size: 0.8438rem; color: var(--ivory-dim); }
 
 .bz-node--hub {
@@ -560,7 +565,18 @@
 .bz-velvet p:last-child { margin: 0; }
 .bz-velvet strong { color: var(--ivory); }
 
-.bz-tablecase { overflow-x: auto; }
+.bz-tablecase { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--brass-dim) var(--panel); position: relative; }
+.bz-tablescroll { position: relative; }
+@media (max-width: 760px) {
+  .bz-tablescroll::after {
+    content: '';
+    position: absolute;
+    top: 1px; right: 1px; bottom: 1px;
+    width: 3.25rem;
+    background: linear-gradient(90deg, transparent, rgba(22, 19, 14, 0.92));
+    pointer-events: none;
+  }
+}
 .bz-table { width: 100%; border-collapse: collapse; font-size: 0.8438rem; min-width: 30rem; }
 .bz-table caption {
   text-align: left;
@@ -864,20 +880,21 @@
 
 /* ---------- Reveals (Default sichtbar, nur mit JS animiert) ---------- */
 
-.bz-js .bz-r {
+/* Ein Motion-Moment (Pipeline-Stagger); nur Kapitelkoepfe blenden zusaetzlich ein */
+.bz-js .bz-head.bz-r {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.bz-js .bz-r.bz-in { opacity: 1; transform: none; }
+.bz-js .bz-head.bz-r.bz-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .bz-js .bz-r, .bz-js .bz-rail[data-animate] li { opacity: 1; transform: none; transition: none; }
+  .bz-js .bz-head.bz-r, .bz-js .bz-rail[data-animate] li { opacity: 1; transform: none; transition: none; }
 }
 
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: #0C0B09; }
+body { margin: 0; background: #0C0B09; scrollbar-color: #8A7439 #0C0B09; }
 body::-webkit-scrollbar { width: 9px; }
 body::-webkit-scrollbar-track { background: #0C0B09; }
 body::-webkit-scrollbar-thumb { background: #8A7439; border-radius: 0; }
@@ -1016,13 +1033,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="bz-arch bz-r" role="img" aria-label="Systemarchitektur: Storefront und Shopify Checkout, darunter Shopify Admin als Verwaltungsebene, angebunden an Buchhaltung, Marketing-Stack und CRM">
         <div class="bz-arch-row bz-arch-row--2">
           <div class="bz-case bz-node">
-            <span class="bz-cap">Schaufenster</span>
-            <h3>Storefront</h3>
+            <h3>Storefront <span class="bz-cap">Schaufenster</span></h3>
             <p>Katalog, Detailseiten, Ankauf, Suchauftrag, Kontakt. Eigener Auftritt, eigene Designhoheit.</p>
           </div>
           <div class="bz-case bz-node">
-            <span class="bz-cap">Kaufabschluss</span>
-            <h3>Shopify Checkout</h3>
+            <h3>Shopify Checkout <span class="bz-cap">Kaufabschluss</span></h3>
             <p>Fertiger, PCI-konformer Checkout: Karten, Apple/Google&nbsp;Pay, Klarna, Banküberweisung.</p>
           </div>
         </div>
@@ -1031,8 +1046,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </div>
         <div class="bz-arch-row">
           <div class="bz-node bz-node--hub">
-            <span class="bz-cap">Verwaltungsebene</span>
-            <h3>Shopify Admin</h3>
+            <h3>Shopify Admin <span class="bz-cap">Verwaltungsebene</span></h3>
             <p>Produkte als Unikate mit Metafeldern · Bestellungen · Kunden · Rabatte · Staff-Rollen mit Zwei-Faktor-Pflicht · Zahlungsabwicklung. Ein Ort für den Betrieb, auch mobil.</p>
           </div>
         </div>
@@ -1041,18 +1055,15 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </div>
         <div class="bz-arch-row bz-arch-row--3">
           <div class="bz-case bz-node">
-            <span class="bz-cap">Abrechnung</span>
-            <h3>Buchhaltung</h3>
+            <h3>Buchhaltung <span class="bz-cap">Abrechnung</span></h3>
             <p>easybill/Billbee: Rechnungen inkl. §&nbsp;25a, Ankaufsbelege, Zahlungsabgleich, DATEV-Export.</p>
           </div>
           <div class="bz-case bz-node">
-            <span class="bz-cap">Wachstum</span>
-            <h3>Marketing-Stack</h3>
+            <h3>Marketing-Stack <span class="bz-cap">Wachstum</span></h3>
             <p>GA4 + GTM mit Consent Mode&nbsp;v2, Google&nbsp;Ads, Meta Pixel + Conversions&nbsp;API, Klaviyo.</p>
           </div>
           <div class="bz-case bz-node">
-            <span class="bz-cap">Vertrieb</span>
-            <h3>CRM · HubSpot</h3>
+            <h3>CRM · HubSpot <span class="bz-cap">Vertrieb</span></h3>
             <p>Pipelines für Ankauf und Suchauftrag/High-Ticket, synchronisiert mit den Shopify-Kunden.</p>
           </div>
         </div>
@@ -1137,7 +1148,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <p>Beim Ankauf von Privat wird beim Wiederverkauf nur die <strong>Marge</strong> versteuert, nicht der Verkaufspreis. Rechnungen tragen dann keinen USt-Ausweis, und jede Uhr braucht lückenlose Aufzeichnungen: Einkaufspreis, Verkaufspreis, Differenz.</p>
           <p>Shopify bildet das nicht ab. Die Rechnungsstellung übernimmt ein deutsches Tool (easybill oder Billbee), je Uhr umschaltbar zwischen Differenz- und Regelbesteuerung, mit DATEV-Export an den Steuerberater.</p>
         </aside>
-        <div class="bz-case bz-tablecase bz-r">
+        <div class="bz-tablescroll"><div class="bz-case bz-tablecase">
           <table class="bz-table">
             <caption>Zahlungsarten nach Einsatz</caption>
             <thead>
@@ -1151,7 +1162,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
               <tr><td>Barzahlung bei Übergabe</td><td class="bz-dim">nur mit GwG-Prozess; über 10.000&nbsp;€ ausgeschlossen</td></tr>
             </tbody>
           </table>
-        </div>
+        </div></div>
       </div>
 
       <p class="bz-note bz-r">Eine 2-%-Kartengebühr auf eine 20.000-€-Uhr sind 400&nbsp;€. Deshalb wird die Überweisung im Hochpreissegment aktiv angeboten.</p>
@@ -1295,7 +1306,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <p class="bz-lead">Richtwerte netto pro Monat für die Startphase: Die Fixkosten bleiben klein, das Budget arbeitet in den Anzeigen.</p>
       </div>
       <div class="bz-costwrap">
-        <div class="bz-case bz-tablecase bz-r">
+        <div class="bz-tablescroll"><div class="bz-case bz-tablecase">
           <table class="bz-table">
             <thead>
               <tr><th scope="col">Position</th><th scope="col" class="bz-right">ca. / Monat</th></tr>
@@ -1313,7 +1324,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
               <tr class="bz-sum"><td>Gesamt Startphase</td><td class="bz-right">~4.700–4.900&nbsp;€</td></tr>
             </tbody>
           </table>
-        </div>
+        </div></div>
         <p class="bz-note bz-r">Einmalig hinzu kommen: Entwicklung Phase 1–2, Produktfotografie, Rechtstexte-Paket und das Steuerberatungs-Setup. Preisstände bei Beauftragung prüfen.</p>
       </div>
     </div>
@@ -1334,7 +1345,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <li class="bz-r"><div><h3>Versand Hochpreis</h3><p>Höherversicherung oder Wertlogistik, ab welcher Grenze? <strong>Mit Versicherungsangeboten klären.</strong></p></div></li>
         <li class="bz-r"><div><h3>Kommission</h3><p>Ab Start oder später? <strong>Empfehlung: Verträge vorbereiten</strong>, aktiv bewerben erst in Phase&nbsp;3.</p></div></li>
         <li class="bz-r"><div><h3>Internationalisierung</h3><p><strong>Empfehlung: Start in DE/AT</strong>; Erweiterung erst nach steuerlicher Klärung (§&nbsp;25a und OSS schließen sich aus).</p></div></li>
-        <li class="bz-r"><div><h3>Chrono24</h3><p>Parallelvertrieb ja/nein, und mit welcher Preisstrategie gegenüber dem eigenen Shop?</p></div></li>
+        <li class="bz-r"><div><h3>Chrono24</h3><p>Parallelvertrieb ja/nein? <strong>Empfehlung: als Zweitkanal für Standware ab Phase&nbsp;3</strong>, mit Preisparität zum eigenen Shop.</p></div></li>
         <li class="bz-r"><div><h3>Budgetfreigabe</h3><p>Ads-Startbudgets (~4.500&nbsp;€/Monat) und Produktfotografie freigeben. <strong>Voraussetzung für Phase&nbsp;2.</strong></p></div></li>
       </ol>
 
@@ -1369,7 +1380,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     video.addEventListener('error', function () { video.remove(); });
   }
 
-  var targets = root.querySelectorAll('.bz-r, .bz-rail[data-animate]');
+  var targets = root.querySelectorAll('.bz-head.bz-r, .bz-rail[data-animate]');
   if (reduced || !('IntersectionObserver' in window)) {
     targets.forEach(function (el) { el.classList.add('bz-in'); });
     return;
