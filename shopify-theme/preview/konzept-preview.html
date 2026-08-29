@@ -566,14 +566,14 @@
 .bz-velvet strong { color: var(--ivory); }
 
 .bz-tablecase { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--brass-dim) var(--panel); position: relative; }
-.bz-tablescroll { position: relative; }
+.bz-tablescroll { position: relative; min-width: 0; }
 @media (max-width: 760px) {
   .bz-tablescroll::after {
     content: '';
     position: absolute;
     top: 1px; right: 1px; bottom: 1px;
-    width: 3.25rem;
-    background: linear-gradient(90deg, transparent, rgba(22, 19, 14, 0.92));
+    width: 3.5rem;
+    background: linear-gradient(90deg, transparent, rgba(10, 9, 7, 0.95));
     pointer-events: none;
   }
 }
