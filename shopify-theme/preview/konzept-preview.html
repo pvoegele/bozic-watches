@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOZIC · Konzept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Archivo:wght@300;400;500;600;700&display=swap">
+<style>
+/* ==========================================================================
+   BOZIC Watches — Konzept · „Tresorraum bei Nacht"
+   Vorschau der Shopify-Section sections/konzept.liquid
+   ========================================================================== */
+
+.bz {
+  --vault: #0C0B09;          /* Raum nach Ladenschluss — warmes Schwarzbraun */
+  --vault-deep: #100E0B;
+  --panel: #16130E;          /* Vitrinenkorpus */
+  --panel-lit: #1C1812;      /* angestrahlte Fläche */
+  --brass: #C9A24B;          /* Messing */
+  --brass-bright: #E9CE80;   /* Messingglanz im Licht */
+  --brass-dim: #8A7439;
+  --ivory: #F2EDE2;          /* warmes Licht auf Papier */
+  --ivory-dim: #B3AA96;      /* Sekundärtext */
+  --velvet: #10241C;         /* Vitrinensamt, dunkelgrün */
+  --line-brass: rgba(201, 162, 75, 0.28);
+  --line-faint: rgba(242, 237, 226, 0.10);
+
+  --serif: "Bodoni Moda", "Bodoni MT", Didot, "Times New Roman", serif;
+  --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  font-family: var(--sans);
+  font-weight: 300;
+  background: var(--vault);
+  color: var(--ivory);
+  line-height: 1.7;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bz *, .bz *::before, .bz *::after { box-sizing: border-box; }
+.bz ::selection { background: var(--brass); color: var(--vault); }
+.bz a { color: inherit; }
+.bz :focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+
+.bz-wrap { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+@media (min-width: 1024px) { .bz-wrap { padding: 0 2.5rem; } }
+
+/* ---------- Typografie ---------- */
+
+.bz h1, .bz h2, .bz h3 { margin: 0; text-wrap: balance; }
+
+.bz-display {
+  font-family: var(--serif);
+  font-weight: 480;
+  letter-spacing: 0.005em;
+  line-height: 1.04;
+}
+
+.bz-h2 {
+  font-family: var(--serif);
+  font-weight: 480;
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.08;
+  color: var(--ivory);
+}
+.bz-h2 .bz-no {
+  font-family: var(--mono);
+  font-size: 0.32em;
+  font-weight: 400;
+  color: var(--brass);
+  letter-spacing: 0.28em;
+  vertical-align: 0.9em;
+  margin-right: 1.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bz-lead {
+  font-size: 1.0313rem;
+  color: var(--ivory-dim);
+  max-width: 44rem;
+  margin: 1.25rem 0 0;
+}
+
+.bz-head { margin-bottom: 3.25rem; }
+
+.bz-cap {
+  font-size: 0.6563rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 500;
+  color: var(--brass);
+}
+
+.bz-mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- Sektionen & Licht ---------- */
+
+.bz-sec { position: relative; padding: 6.5rem 0; overflow: hidden; }
+@media (max-width: 720px) { .bz-sec { padding: 4.25rem 0; } }
+
+.bz-sec + .bz-sec { border-top: 1px solid var(--line-faint); }
+
+/* Jede Sektion hat ihre eigene Lichtquelle */
+.bz-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 55rem 30rem at 18% 0%, rgba(233, 206, 128, 0.055), transparent 62%);
+}
+.bz-sec--right::before {
+  background: radial-gradient(ellipse 55rem 30rem at 85% 0%, rgba(233, 206, 128, 0.055), transparent 62%);
+}
+.bz-sec--center::before {
+  background: radial-gradient(ellipse 60rem 26rem at 50% 0%, rgba(233, 206, 128, 0.05), transparent 65%);
+}
+.bz-sec > .bz-wrap { position: relative; }
+
+/* ---------- Vitrinen-Panel ---------- */
+
+.bz-case {
+  background: linear-gradient(180deg, var(--panel-lit), var(--panel) 38%);
+  border: 1px solid var(--line-faint);
+  border-top-color: var(--line-brass);
+  position: relative;
+}
+.bz-case::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(233, 206, 128, 0.55), transparent);
+}
+
+/* ---------- Hero ---------- */
+
+.bz-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 6rem 0 4rem;
+  background: var(--vault);
+}
+
+.bz-hero-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.bz-hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+/* Platzhalter-Szene: Lichtkegel + Staub — trägt den Hero auch ohne Video */
+.bz-hero-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 46rem 34rem at 74% 44%, rgba(233, 206, 128, 0.12), transparent 58%),
+    conic-gradient(from 152deg at 96% -14%, transparent 0deg, rgba(233, 206, 128, 0.10) 12deg, rgba(233, 206, 128, 0.02) 26deg, transparent 34deg),
+    var(--vault);
+}
+/* Abdunklung zur Textseite + Boden */
+.bz-hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(12, 11, 9, 0.94) 0%, rgba(12, 11, 9, 0.55) 46%, rgba(12, 11, 9, 0.15) 75%, rgba(12, 11, 9, 0.5) 100%),
+    linear-gradient(0deg, rgba(12, 11, 9, 0.9) 0%, transparent 30%);
+}
+
+.bz-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .bz-hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+}
+
+.bz-hero h1 {
+  font-size: clamp(2.9rem, 7.2vw, 5.9rem);
+  color: var(--ivory);
+}
+.bz-hero h1 em {
+  font-style: italic;
+  font-weight: 460;
+  color: var(--brass-bright);
+}
+
+.bz-hero .bz-lead {
+  font-size: clamp(1.0313rem, 1.6vw, 1.1875rem);
+  max-width: 34rem;
+  margin-top: 1.75rem;
+}
+
+.bz-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 2.25rem;
+  font-size: 0.6563rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-weight: 500;
+  color: var(--ivory-dim);
+}
+.bz-hero-meta strong { color: var(--brass); font-weight: 500; }
+
+/* Exponat: Gravur-Uhr im Lichtkegel (Platzhalter für das Hero-Video) */
+.bz-exhibit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 1rem 0 2.5rem;
+}
+.bz-exhibit svg {
+  width: min(21rem, 72vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 42px rgba(0, 0, 0, 0.55));
+}
+.bz-exhibit figcaption {
+  margin-top: 1.6rem;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--ivory-dim);
+  text-align: center;
+  white-space: nowrap;
+}
+.bz-exhibit figcaption b { color: var(--brass); font-weight: 500; }
+/* Podestlinie unter dem Exponat */
+.bz-exhibit figcaption::before {
+  content: '';
+  display: block;
+  width: 15rem;
+  max-width: 60vw;
+  height: 1px;
+  margin: 0 auto 1.1rem;
+  background: linear-gradient(90deg, transparent, var(--line-brass), transparent);
+}
+
+.bz-hero-nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 3.25rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--line-faint);
+}
+.bz-hero-nav a {
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--line-brass);
+  text-decoration: none;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  color: var(--ivory);
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+.bz-hero-nav a .bz-mono { color: var(--brass); margin-right: 0.5em; font-size: 0.9em; }
+.bz-hero-nav a:hover { background: var(--brass); color: var(--vault); border-color: var(--brass); }
+.bz-hero-nav a:hover .bz-mono { color: var(--vault); }
+
+/* ---------- 01 Standbeine ---------- */
+
+.bz-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+@media (max-width: 900px) { .bz-pillars { grid-template-columns: 1fr; } }
+
+.bz-pillar { padding: 2.25rem 2rem 2rem; display: flex; flex-direction: column; }
+.bz-pillar--lead { background: linear-gradient(180deg, #211B12, var(--panel) 55%); }
+
+.bz-pillar h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--ivory);
+  padding-bottom: 1rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line-brass);
+}
+.bz-pillar p { margin: 0; font-size: 0.9375rem; color: var(--ivory-dim); }
+.bz-pillar-fact {
+  margin-top: auto;
+  padding-top: 1.4rem;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  color: var(--brass);
+}
+
+/* ---------- Verkaufswege: Preisskala ---------- */
+
+.bz-scale { margin-top: 1rem; }
+.bz-scale-bar {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, var(--brass-dim), var(--brass), var(--brass-bright));
+  margin: 3.25rem 0 0;
+}
+.bz-scale-bar i {
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 0.85rem;
+  transform: translateY(-50%);
+  background: var(--brass);
+}
+.bz-scale-bar i:nth-child(1) { left: 33.3%; }
+.bz-scale-bar i:nth-child(2) { left: 66.6%; }
+
+.bz-modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 1.9rem;
+}
+@media (max-width: 860px) {
+  .bz-scale-bar { display: none; }
+  .bz-modes { grid-template-columns: 1fr; gap: 0; border-left: 1px solid var(--line-brass); }
+  .bz-modes > div { padding: 1.5rem 0 1.5rem 1.75rem; }
+  .bz-modes > div + div { border-top: 1px solid var(--line-faint); }
+}
+
+.bz-mode .bz-price {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--brass-bright);
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+.bz-mode h3 {
+  font-size: 0.9688rem;
+  font-weight: 600;
+  font-family: var(--sans);
+  color: var(--ivory);
+  margin: 0.5rem 0 0.45rem;
+}
+.bz-mode p { margin: 0; font-size: 0.875rem; color: var(--ivory-dim); }
+
+.bz-note {
+  margin-top: 2.75rem;
+  font-size: 0.8125rem;
+  color: var(--ivory-dim);
+}
+.bz-note code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  color: var(--brass);
+  border: 1px solid var(--line-brass);
+  padding: 0.1em 0.45em;
+}
+
+/* ---------- 02 Architektur ---------- */
+
+.bz-arch { display: flex; flex-direction: column; }
+.bz-arch-row { display: grid; gap: 1.1rem; }
+.bz-arch-row--2 { grid-template-columns: 1fr 1fr; }
+.bz-arch-row--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .bz-arch-row--2, .bz-arch-row--3 { grid-template-columns: 1fr; } }
+
+.bz-node { padding: 1.5rem 1.6rem; }
+.bz-node .bz-cap { display: block; margin-bottom: 0.6rem; }
+.bz-node h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.1875rem;
+  color: var(--ivory);
+  margin-bottom: 0.35rem;
+}
+.bz-node p { margin: 0; font-size: 0.8438rem; color: var(--ivory-dim); }
+
+.bz-node--hub {
+  border: 1px solid var(--brass);
+  box-shadow: inset 0 0 0 4px var(--vault), inset 0 0 0 5px var(--line-brass);
+  background: linear-gradient(180deg, #221C12, var(--panel) 60%);
+  padding: 1.9rem 2rem;
+}
+
+.bz-arch-joint {
+  display: flex;
+  justify-content: center;
+  padding: 0.35rem 0;
+  color: var(--brass);
+}
+.bz-arch-joint svg { width: 1rem; height: 1rem; }
+
+.bz-arch-why {
+  margin: 3.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem;
+}
+@media (max-width: 860px) { .bz-arch-why { grid-template-columns: 1fr; } }
+.bz-arch-why li {
+  border-top: 1px solid var(--line-brass);
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--ivory-dim);
+}
+.bz-arch-why strong { display: block; color: var(--ivory); font-weight: 600; margin-bottom: 0.25rem; }
+
+/* ---------- 03 Verwaltung ---------- */
+
+.bz-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 3.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.bz-rail li {
+  counter-increment: step;
+  position: relative;
+  background: linear-gradient(180deg, var(--panel-lit), var(--panel));
+  border: 1px solid var(--line-faint);
+  border-top-color: var(--line-brass);
+  padding: 0.7rem 1rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--ivory);
+}
+.bz-rail li::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.5938rem;
+  color: var(--brass);
+  letter-spacing: 0.18em;
+  margin-bottom: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+.bz-rail li[data-live] { border-color: var(--brass); color: var(--brass-bright); }
+.bz-rail li[data-live]::after {
+  content: 'im Shop sichtbar';
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.5313rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  color: var(--brass);
+  white-space: nowrap;
+}
+
+/* Orchestrierter Moment: Fächer leuchten nacheinander auf */
+.bz-js .bz-rail[data-animate] li {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bz-js .bz-rail[data-animate].bz-in li { opacity: 1; transform: none; }
+
+.bz-admin {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 2.75rem;
+}
+@media (max-width: 960px) { .bz-admin { grid-template-columns: 1fr; } }
+
+.bz-admin h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--ivory);
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line-brass);
+  margin-bottom: 1.1rem;
+}
+.bz-admin p { margin: 0 0 1rem; font-size: 0.8438rem; color: var(--ivory-dim); }
+
+.bz-fields { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 0.7188rem; }
+.bz-fields li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--line-faint);
+  color: var(--ivory);
+}
+.bz-fields li:last-child { border-bottom: none; }
+.bz-fields .bz-tag {
+  font-family: var(--sans);
+  font-size: 0.5938rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--brass);
+  white-space: nowrap;
+  align-self: center;
+}
+.bz-fields .bz-tag--int { color: var(--ivory-dim); }
+
+.bz-list { list-style: none; margin: 0; padding: 0; }
+.bz-list li { padding: 0.55rem 0; border-bottom: 1px solid var(--line-faint); font-size: 0.8438rem; color: var(--ivory-dim); }
+.bz-list li:last-child { border-bottom: none; }
+.bz-list strong { color: var(--ivory); font-weight: 600; }
+
+/* ---------- 04 Abrechnung ---------- */
+
+.bz-billing {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 2.25rem;
+  align-items: stretch;
+}
+@media (max-width: 960px) { .bz-billing { grid-template-columns: 1fr; } }
+
+.bz-velvet {
+  background:
+    radial-gradient(ellipse 26rem 18rem at 28% 0%, rgba(233, 206, 128, 0.09), transparent 62%),
+    var(--velvet);
+  border: 1px solid var(--line-brass);
+  box-shadow: inset 0 0 0 5px var(--velvet), inset 0 0 0 6px rgba(201, 162, 75, 0.35);
+  padding: 2.6rem 2.4rem;
+}
+.bz-velvet .bz-law {
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 3.4vw, 2.8rem);
+  font-weight: 500;
+  color: var(--brass-bright);
+  line-height: 1.05;
+}
+.bz-velvet h3 {
+  font-family: var(--sans);
+  font-size: 0.9688rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin: 1rem 0 0.9rem;
+}
+.bz-velvet p { margin: 0 0 0.9rem; font-size: 0.875rem; color: rgba(242, 237, 226, 0.82); }
+.bz-velvet p:last-child { margin: 0; }
+.bz-velvet strong { color: var(--ivory); }
+
+.bz-tablecase { overflow-x: auto; }
+.bz-table { width: 100%; border-collapse: collapse; font-size: 0.8438rem; min-width: 30rem; }
+.bz-table caption {
+  text-align: left;
+  padding: 1.4rem 1.6rem 0.9rem;
+  font-size: 0.6563rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 500;
+  color: var(--brass);
+}
+.bz-table th {
+  text-align: left;
+  font-size: 0.5938rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--ivory-dim);
+  padding: 0.7rem 1.6rem;
+  border-top: 1px solid var(--line-brass);
+  border-bottom: 1px solid var(--line-faint);
+  white-space: nowrap;
+}
+.bz-table td {
+  padding: 0.8rem 1.6rem;
+  border-bottom: 1px solid var(--line-faint);
+  color: var(--ivory);
+  vertical-align: top;
+}
+.bz-table tr:last-child td { border-bottom: none; }
+.bz-table .bz-dim { color: var(--ivory-dim); }
+.bz-table .bz-right { text-align: right; font-family: var(--mono); font-size: 0.9em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.bz-table tr.bz-sum td {
+  border-top: 1px solid var(--line-brass);
+  color: var(--brass-bright);
+  font-weight: 600;
+}
+.bz-table tr.bz-sum .bz-right { font-weight: 400; }
+
+.bz-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 2.5rem;
+  font-size: 0.7813rem;
+  color: var(--ivory-dim);
+}
+.bz-flow .bz-step {
+  border: 1px solid var(--line-faint);
+  border-top-color: var(--line-brass);
+  background: var(--panel);
+  color: var(--ivory);
+  padding: 0.5rem 0.9rem;
+  font-weight: 500;
+}
+.bz-flow svg { width: 0.85rem; height: 0.85rem; color: var(--brass); flex-shrink: 0; }
+
+/* ---------- 05 Marketing ---------- */
+
+.bz-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.75rem; }
+.bz-chips span {
+  border: 1px solid var(--line-faint);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.7188rem;
+  font-weight: 500;
+  color: var(--ivory-dim);
+}
+.bz-chips span b { color: var(--brass); font-weight: 500; }
+
+.bz-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 900px) { .bz-channels { grid-template-columns: 1fr; } }
+
+.bz-channel { padding: 2.1rem 2rem; }
+.bz-channel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line-brass);
+  padding-bottom: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+.bz-channel-head h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--ivory);
+}
+.bz-channel-head .bz-budget {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+.bz-channel table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+.bz-channel td { padding: 0.6rem 0; border-bottom: 1px solid var(--line-faint); color: var(--ivory-dim); }
+.bz-channel tr:last-child td { border-bottom: none; }
+.bz-channel td:first-child { color: var(--ivory); padding-right: 1rem; }
+.bz-channel td em { font-style: normal; color: var(--ivory-dim); }
+.bz-channel td:last-child {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 0.7188rem;
+  color: var(--ivory-dim);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.bz-channel-note { margin: 1.2rem 0 0; font-size: 0.8125rem; color: var(--ivory-dim); }
+.bz-channel-note strong { color: var(--brass); font-weight: 500; }
+
+.bz-leadflow {
+  margin-top: 1.5rem;
+  padding: 1.4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.8125rem;
+  color: var(--ivory-dim);
+}
+.bz-leadflow strong { color: var(--ivory); font-weight: 600; }
+.bz-leadflow svg { width: 0.85rem; height: 0.85rem; color: var(--brass); flex-shrink: 0; }
+.bz-leadflow .bz-sla {
+  margin-left: auto;
+  border: 1px solid var(--brass);
+  color: var(--brass-bright);
+  font-size: 0.5938rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  white-space: nowrap;
+}
+@media (max-width: 720px) { .bz-leadflow .bz-sla { margin-left: 0; } }
+
+/* ---------- 06 Roadmap ---------- */
+
+.bz-phases { position: relative; margin-left: 0.4rem; }
+.bz-phases::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--brass), var(--line-brass));
+}
+
+.bz-phase {
+  position: relative;
+  padding: 0 0 3.25rem 2.75rem;
+}
+.bz-phase:last-child { padding-bottom: 0.5rem; }
+.bz-phase::before {
+  content: '';
+  position: absolute;
+  left: -0.3rem;
+  top: 0.55rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--vault);
+  border: 1px solid var(--brass);
+  transform: rotate(45deg);
+}
+
+.bz-phase-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.bz-phase-head h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.5625rem;
+  color: var(--ivory);
+}
+.bz-phase-head .bz-when {
+  font-family: var(--mono);
+  font-size: 0.6563rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+.bz-phase .bz-goal { margin: 0 0 1.1rem; font-size: 0.875rem; color: var(--ivory-dim); }
+.bz-phase ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 2.75rem;
+  max-width: 52rem;
+}
+@media (max-width: 820px) { .bz-phase ul { grid-template-columns: 1fr; } }
+.bz-phase li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.8438rem;
+  color: var(--ivory);
+  font-weight: 400;
+}
+.bz-phase li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--brass);
+}
+
+/* ---------- 07 Kosten ---------- */
+
+.bz-costwrap { max-width: 46rem; }
+
+/* ---------- 08 Entscheidungen ---------- */
+
+.bz-decisions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  counter-reset: dec;
+  border-top: 1px solid var(--line-faint);
+}
+@media (max-width: 860px) { .bz-decisions { grid-template-columns: 1fr; } }
+.bz-decisions li {
+  counter-increment: dec;
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 1rem;
+  padding: 1.5rem 2rem 1.5rem 0;
+  border-bottom: 1px solid var(--line-faint);
+}
+@media (min-width: 861px) {
+  .bz-decisions li:nth-child(odd) { border-right: 1px solid var(--line-faint); }
+  .bz-decisions li:nth-child(even) { padding-left: 2rem; padding-right: 0; }
+}
+.bz-decisions li::before {
+  content: counter(dec, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--brass);
+  padding-top: 0.15rem;
+  font-variant-numeric: tabular-nums;
+}
+.bz-decisions h3 { font-size: 0.9375rem; font-weight: 600; color: var(--ivory); margin-bottom: 0.25rem; }
+.bz-decisions p { margin: 0; font-size: 0.8125rem; color: var(--ivory-dim); }
+.bz-decisions p strong { color: rgba(242, 237, 226, 0.92); font-weight: 500; }
+
+/* ---------- CTA & Footer ---------- */
+
+.bz-cta { margin-top: 4.5rem; text-align: center; }
+.bz-cta p {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  font-weight: 460;
+  color: var(--ivory);
+  max-width: 34em;
+  margin: 0 auto 2.25rem;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+.bz-cta p em { font-style: italic; color: var(--brass-bright); }
+.bz-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.bz-btn {
+  display: inline-block;
+  padding: 1rem 2.6rem;
+  border: 1px solid var(--brass);
+  color: var(--brass-bright);
+  text-decoration: none;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-weight: 600;
+  transition: background 0.45s ease, color 0.45s ease;
+}
+.bz-btn:hover { background: var(--brass); color: var(--vault); }
+.bz-btn--ghost { border-color: var(--line-faint); color: var(--ivory-dim); }
+.bz-btn--ghost:hover { background: transparent; border-color: var(--brass); color: var(--brass-bright); }
+
+.bz-foot {
+  margin-top: 5.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line-faint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  justify-content: space-between;
+  font-size: 0.5938rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-weight: 500;
+  color: var(--ivory-dim);
+}
+
+/* ---------- Reveals (Default sichtbar, nur mit JS animiert) ---------- */
+
+.bz-js .bz-r {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bz-js .bz-r.bz-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bz-js .bz-r, .bz-js .bz-rail[data-animate] li { opacity: 1; transform: none; transition: none; }
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: #0C0B09; }
+body::-webkit-scrollbar { width: 9px; }
+body::-webkit-scrollbar-track { background: #0C0B09; }
+body::-webkit-scrollbar-thumb { background: #8A7439; border-radius: 0; }
+</style>
+</head>
+<body>
+<!--
+THESIS: Das Strategiepapier als Tresorraum nach Ladenschluss — der Leser geht mit einer Lichtquelle durch acht Vitrinen; Licht ist Hierarchie. Verweigert: das weiße Consulting-Deck und die generische Gold-auf-Schwarz-Luxus-Landingpage mit Karten-Raster.
+OWN-WORLD: Warmes Schwarzbraun #0C0B09, Vitrinen-Panels mit Messing-Oberlicht, Messing #C9A24B→#E9CE80 als einziger Akzent, Samtgrün #10241C einmalig für die §25a-Box; Bodoni Moda (Auktionshaus-Didone) für Headlines, Archivo für Text, Mono für Beträge/Felder; Gravur-Uhr als SVG-Exponat.
+STORY: Inhaber/Partner versteht in einer Begehung: Geschäftsmodell, Architektur, Verwaltung, Abrechnung, Marketing, Roadmap, Kosten — und die acht Entscheidungen, die den Start freigeben.
+FIRST VIEWPORT: Links der Titel "Vom Showroom zum Handelshaus." mit kursivem Messing-Akzent, Untertitel, Meta-Zeile; rechts das Exponat (Gravur-Uhr im Spotkegel, Video-Slot darüber); unten Kapitel-Chips 01–08 als primäre Aktion.
+FORM: Longform-Begehung, Kapitel als Vitrinen; ein Motion-Moment: die Waren-Pipeline leuchtet Fach für Fach auf. Zugewiesene Richtung (Seed 0ff26f27, Kandidat 3, degraded roll).
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<div class="bz">
+
+  <!-- ================= HERO ================= -->
+  <header class="bz-hero">
+    <div class="bz-hero-media" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" src="https://d8j0ntlcm91z4.cloudfront.net/user_3IQI0I3ycucUMC86I1jRMunsmso/hf_20260829_135814_d372490d-2f94-4e50-8d17-b8944a77d023.mp4"></video>
+    </div>
+    <div class="bz-wrap">
+      <div class="bz-hero-grid">
+        <div>
+          <h1 class="bz-display">Vom Showroom<br>zum <em>Handelshaus.</em></h1>
+          <p class="bz-lead">Das Konzept für BOZIC Watches: Shopify-Handel für exklusive Uhren mit Verwaltungsebene, sauberer Abrechnung und planbarer Kundengewinnung über Google und Instagram.</p>
+          <div class="bz-hero-meta">
+            <span><strong>Strategiepapier</strong></span>
+            <span>Stand 29.08.2026</span>
+            <span>Zur Abstimmung</span>
+          </div>
+        </div>
+        <figure class="bz-exhibit">
+          <svg viewBox="0 0 240 240" fill="none" aria-hidden="true">
+            <!-- Gravur-Uhr: Platzhalter-Exponat -->
+            <circle cx="120" cy="120" r="103" stroke="#8A7439" stroke-width="0.7" opacity="0.5"/>
+            <circle cx="120" cy="120" r="96" stroke="#C9A24B" stroke-width="1.4"/>
+            <circle cx="120" cy="120" r="88" stroke="#C9A24B" stroke-width="0.7" opacity="0.7"/>
+            <circle cx="120" cy="120" r="96" stroke="#E9CE80" stroke-width="2.2" stroke-dasharray="1.6 8.45" opacity="0.85" transform="rotate(-90 120 120)"/>
+            <circle cx="120" cy="120" r="76" stroke="#8A7439" stroke-width="0.6" opacity="0.6"/>
+            <g stroke="#E9CE80" stroke-width="2">
+              <line x1="120" y1="30" x2="120" y2="44"/>
+              <line x1="120" y1="196" x2="120" y2="210"/>
+              <line x1="30" y1="120" x2="44" y2="120"/>
+              <line x1="196" y1="120" x2="210" y2="120"/>
+            </g>
+            <g stroke="#C9A24B" stroke-width="1" opacity="0.75">
+              <line x1="165" y1="42" x2="158" y2="54"/><line x1="198" y1="75" x2="186" y2="82"/>
+              <line x1="198" y1="165" x2="186" y2="158"/><line x1="165" y1="198" x2="158" y2="186"/>
+              <line x1="75" y1="198" x2="82" y2="186"/><line x1="42" y1="165" x2="54" y2="158"/>
+              <line x1="42" y1="75" x2="54" y2="82"/><line x1="75" y1="42" x2="82" y2="54"/>
+            </g>
+            <!-- Zeiger: 10:08 -->
+            <line x1="120" y1="120" x2="83" y2="94" stroke="#E9CE80" stroke-width="3" stroke-linecap="round"/>
+            <line x1="120" y1="120" x2="162" y2="82" stroke="#E9CE80" stroke-width="2" stroke-linecap="round"/>
+            <line x1="120" y1="120" x2="120" y2="182" stroke="#C9A24B" stroke-width="0.8" opacity="0.8"/>
+            <circle cx="120" cy="120" r="3.4" fill="#E9CE80"/>
+            <!-- Krone -->
+            <rect x="221" y="114" width="8" height="12" stroke="#C9A24B" stroke-width="1" fill="none"/>
+            <line x1="229" y1="117" x2="232" y2="117" stroke="#C9A24B" stroke-width="0.8"/>
+            <line x1="229" y1="123" x2="232" y2="123" stroke="#C9A24B" stroke-width="0.8"/>
+          </svg>
+          <figcaption>Exponat · <b>Hero-Video</b> folgt</figcaption>
+        </figure>
+      </div>
+      <nav class="bz-hero-nav" aria-label="Kapitel">
+        <a href="#modell"><span class="bz-mono">01</span>Geschäftsmodell</a>
+        <a href="#architektur"><span class="bz-mono">02</span>Architektur</a>
+        <a href="#verwaltung"><span class="bz-mono">03</span>Verwaltung</a>
+        <a href="#abrechnung"><span class="bz-mono">04</span>Abrechnung</a>
+        <a href="#marketing"><span class="bz-mono">05</span>Marketing</a>
+        <a href="#roadmap"><span class="bz-mono">06</span>Roadmap</a>
+        <a href="#kosten"><span class="bz-mono">07</span>Kosten</a>
+        <a href="#entscheidungen"><span class="bz-mono">08</span>Entscheidungen</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= 01 GESCHÄFTSMODELL ================= -->
+  <section class="bz-sec" id="modell">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">01</span>Drei Standbeine</h2>
+        <p class="bz-lead">Der Shop verkauft nicht nur: Er kauft an und beschafft auf Wunsch. Jedes Standbein speist die anderen: Ankauf liefert die Ware, Verkauf die Marge, Suchaufträge die Bindung.</p>
+      </div>
+      <div class="bz-pillars">
+        <article class="bz-case bz-pillar bz-r">
+          <h3>Verkauf</h3>
+          <p>Geprüfte, aufbereitete Uhren als Unikate. Direkter Checkout im Einstiegssegment, beratungsgeführter Verkauf mit Reservierung im Hochpreissegment.</p>
+          <span class="bz-pillar-fact">Bruttomarge typ. 10–25 %</span>
+        </article>
+        <article class="bz-case bz-pillar bz-pillar--lead bz-r">
+          <h3>Ankauf</h3>
+          <p>Ankauf aus Privatbesitz als wichtigster Beschaffungskanal, gesteuert über Lead-Kampagnen auf Instagram und Google, abgewickelt in einer festen CRM-Pipeline mit 24-Stunden-Zusage.</p>
+          <span class="bz-pillar-fact">Beschaffungskanal Nr. 1</span>
+        </article>
+        <article class="bz-case bz-pillar bz-r">
+          <h3>Suchauftrag &amp; Kommission</h3>
+          <p>Kunden hinterlegen ihre Wunschuhr, BOZIC beschafft sie, ohne Standrisiko. Kommission ergänzt das Sortiment ohne Kapitaleinsatz.</p>
+          <span class="bz-pillar-fact">Planbare Marge, kein Lager</span>
+        </article>
+      </div>
+
+      <div class="bz-scale bz-r">
+        <div class="bz-scale-bar" aria-hidden="true"><i></i><i></i></div>
+        <div class="bz-modes">
+          <div class="bz-mode">
+            <span class="bz-price">bis 3.000&nbsp;€</span>
+            <h3>Direkter Checkout</h3>
+            <p>Warenkorb, Shopify Checkout, Karte, Apple/Google&nbsp;Pay oder Klarna; versicherter Versand am nächsten Werktag.</p>
+          </div>
+          <div class="bz-mode">
+            <span class="bz-price">3.000–15.000&nbsp;€</span>
+            <h3>Checkout plus Beratung</h3>
+            <p>Kauf weiterhin direkt möglich, zusätzlich prominente Beratung, WhatsApp-Kontakt und Banküberweisung als gebührenfreie Zahlart.</p>
+          </div>
+          <div class="bz-mode">
+            <span class="bz-price">ab 15.000&nbsp;€</span>
+            <h3>Anfrage &amp; Reservierung</h3>
+            <p>Persönliches Angebot, Reservierung gegen Anzahlung (z.&nbsp;B. 10&nbsp;%), Restzahlung per Überweisung. Übergabe im Haus oder per Wertlogistik.</p>
+          </div>
+        </div>
+        <p class="bz-note">Gesteuert pro Uhr über das Metafeld <code>custom.sales_mode</code>. Kein zweites System, keine Doppelpflege.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 ARCHITEKTUR ================= -->
+  <section class="bz-sec bz-sec--right" id="architektur">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">02</span>Ein Frontend, ein Backoffice</h2>
+        <p class="bz-lead">Die Storefront bleibt das Schaufenster mit voller Designfreiheit. Shopify liefert dahinter alles, was schwer selbst zu bauen ist: Checkout, Zahlarten, Bestell- und Kundenverwaltung.</p>
+      </div>
+
+      <div class="bz-arch bz-r" role="img" aria-label="Systemarchitektur: Storefront und Shopify Checkout, darunter Shopify Admin als Verwaltungsebene, angebunden an Buchhaltung, Marketing-Stack und CRM">
+        <div class="bz-arch-row bz-arch-row--2">
+          <div class="bz-case bz-node">
+            <span class="bz-cap">Schaufenster</span>
+            <h3>Storefront</h3>
+            <p>Katalog, Detailseiten, Ankauf, Suchauftrag, Kontakt. Eigener Auftritt, eigene Designhoheit.</p>
+          </div>
+          <div class="bz-case bz-node">
+            <span class="bz-cap">Kaufabschluss</span>
+            <h3>Shopify Checkout</h3>
+            <p>Fertiger, PCI-konformer Checkout: Karten, Apple/Google&nbsp;Pay, Klarna, Banküberweisung.</p>
+          </div>
+        </div>
+        <div class="bz-arch-joint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16m0 0 5-5m-5 5-5-5"></path></svg>
+        </div>
+        <div class="bz-arch-row">
+          <div class="bz-node bz-node--hub">
+            <span class="bz-cap">Verwaltungsebene</span>
+            <h3>Shopify Admin</h3>
+            <p>Produkte als Unikate mit Metafeldern · Bestellungen · Kunden · Rabatte · Staff-Rollen mit Zwei-Faktor-Pflicht · Zahlungsabwicklung. Ein Ort für den Betrieb, auch mobil.</p>
+          </div>
+        </div>
+        <div class="bz-arch-joint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16m0 0 5-5m-5 5-5-5"></path></svg>
+        </div>
+        <div class="bz-arch-row bz-arch-row--3">
+          <div class="bz-case bz-node">
+            <span class="bz-cap">Abrechnung</span>
+            <h3>Buchhaltung</h3>
+            <p>easybill/Billbee: Rechnungen inkl. §&nbsp;25a, Ankaufsbelege, Zahlungsabgleich, DATEV-Export.</p>
+          </div>
+          <div class="bz-case bz-node">
+            <span class="bz-cap">Wachstum</span>
+            <h3>Marketing-Stack</h3>
+            <p>GA4 + GTM mit Consent Mode&nbsp;v2, Google&nbsp;Ads, Meta Pixel + Conversions&nbsp;API, Klaviyo.</p>
+          </div>
+          <div class="bz-case bz-node">
+            <span class="bz-cap">Vertrieb</span>
+            <h3>CRM · HubSpot</h3>
+            <p>Pipelines für Ankauf und Suchauftrag/High-Ticket, synchronisiert mit den Shopify-Kunden.</p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="bz-arch-why bz-r">
+        <li><strong>Designhoheit bleibt.</strong> Kein Theme-Korsett — das Schaufenster gehört der Marke.</li>
+        <li><strong>Kein Eigenbau von Zahlung.</strong> Checkout, PCI und Betrugsprüfung kommen fertig von Shopify.</li>
+        <li><strong>Ein Ort für den Betrieb.</strong> Produkte, Bestellungen, Kunden und Rechte im Shopify Admin.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= 03 VERWALTUNG ================= -->
+  <section class="bz-sec" id="verwaltung">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">03</span>Jede Uhr durchläuft eine Pipeline</h2>
+        <p class="bz-lead">Unikate brauchen Disziplin: Jede Uhr trägt ihren Status als Metafeld, vom Ankauf bis zur Übergabe. Erst ab „Online" ist sie im Shop sichtbar, die Standtage laufen ab dann automatisch mit.</p>
+      </div>
+
+      <ol class="bz-rail bz-r" data-animate>
+        <li>Angekauft</li>
+        <li>Echtheitsprüfung</li>
+        <li>Aufbereitung</li>
+        <li>Fotografie</li>
+        <li data-live>Online</li>
+        <li>Reserviert</li>
+        <li>Verkauft</li>
+        <li>Versendet</li>
+      </ol>
+
+      <div class="bz-admin">
+        <div class="bz-r">
+          <h3>Metafelder je Uhr</h3>
+          <p>Öffentliche Felder speisen die Detailseite, interne bleiben im Admin, inklusive der Datenbasis für §&nbsp;25a.</p>
+          <ul class="bz-fields">
+            <li><span>custom.brand · model · reference</span><span class="bz-tag">öffentlich</span></li>
+            <li><span>custom.condition · year · material</span><span class="bz-tag">öffentlich</span></li>
+            <li><span>custom.sales_mode</span><span class="bz-tag">neu</span></li>
+            <li><span>custom.scope_of_delivery</span><span class="bz-tag">neu</span></li>
+            <li><span>internal.purchase_price</span><span class="bz-tag bz-tag--int">intern · §25a</span></li>
+            <li><span>internal.supplier · serial_no</span><span class="bz-tag bz-tag--int">intern</span></li>
+            <li><span>internal.workflow_status</span><span class="bz-tag bz-tag--int">intern</span></li>
+          </ul>
+        </div>
+        <div class="bz-r">
+          <h3>Rollen &amp; Rechte</h3>
+          <ul class="bz-list">
+            <li><strong>Inhaber</strong> — Vollzugriff inkl. Finanzen und Apps</li>
+            <li><strong>Verkauf/Backoffice</strong> — Produkte, Bestellungen, Kunden; ohne Einkaufspreise und Zahlungs&shy;einstellungen</li>
+            <li><strong>Content extern</strong> — nur Produktentwürfe (Fotografie)</li>
+            <li><strong>Steuerberater</strong> — Zugang über das Buchhaltungs-Tool</li>
+            <li><strong>Alle Konten</strong> — Zwei-Faktor-Authentifizierung Pflicht</li>
+          </ul>
+        </div>
+        <div class="bz-r">
+          <h3>CRM-Pipelines</h3>
+          <p>Ankauf und Suchaufträge sind Vertriebsprozesse; sie laufen in HubSpot, nicht im Shop.</p>
+          <ul class="bz-list">
+            <li><strong>Ankauf:</strong> Neu → Bewertung → Angebot → Verhandlung → Angenommen → Waren-Pipeline</li>
+            <li><strong>Suchauftrag:</strong> Qualifiziert → Suche → Angebot → Anzahlung → Abschluss</li>
+            <li><strong>Automatik:</strong> Bestätigung sofort, Erinnerungen, Absage-Nurturing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 04 ABRECHNUNG ================= -->
+  <section class="bz-sec bz-sec--right" id="abrechnung">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">04</span>Abrechnung, die dem Finanzamt standhält</h2>
+        <p class="bz-lead">Bei Warenwerten bis 50.000&nbsp;€ entscheidet die Zahlungs- und Steuerstruktur über die Marge, nicht das Werbebudget.</p>
+      </div>
+
+      <div class="bz-billing">
+        <aside class="bz-velvet bz-r">
+          <span class="bz-law">§ 25a UStG</span>
+          <h3>Differenzbesteuerung — das Kernthema</h3>
+          <p>Beim Ankauf von Privat wird beim Wiederverkauf nur die <strong>Marge</strong> versteuert, nicht der Verkaufspreis. Rechnungen tragen dann keinen USt-Ausweis, und jede Uhr braucht lückenlose Aufzeichnungen: Einkaufspreis, Verkaufspreis, Differenz.</p>
+          <p>Shopify bildet das nicht ab. Die Rechnungsstellung übernimmt ein deutsches Tool (easybill oder Billbee), je Uhr umschaltbar zwischen Differenz- und Regelbesteuerung, mit DATEV-Export an den Steuerberater.</p>
+        </aside>
+        <div class="bz-case bz-tablecase bz-r">
+          <table class="bz-table">
+            <caption>Zahlungsarten nach Einsatz</caption>
+            <thead>
+              <tr><th scope="col">Zahlart</th><th scope="col">Einsatz</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Shopify Payments <span class="bz-dim">(Karten, Wallets)</span></td><td class="bz-dim">Standard bis mittleres Segment</td></tr>
+              <tr><td>Klarna <span class="bz-dim">(Rechnung/Raten)</span></td><td class="bz-dim">Einstiegssegment, Limits beachten</td></tr>
+              <tr><td>Banküberweisung / Vorkasse</td><td class="bz-dim">ab ca. 3.000&nbsp;€ aktiv, ab 10.000&nbsp;€ bevorzugt, gebührenfrei</td></tr>
+              <tr><td>Anzahlung + Restzahlung</td><td class="bz-dim">Reservierungen und Suchaufträge (Draft Order)</td></tr>
+              <tr><td>Barzahlung bei Übergabe</td><td class="bz-dim">nur mit GwG-Prozess; über 10.000&nbsp;€ ausgeschlossen</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="bz-note bz-r">Eine 2-%-Kartengebühr auf eine 20.000-€-Uhr sind 400&nbsp;€. Deshalb wird die Überweisung im Hochpreissegment aktiv angeboten.</p>
+
+      <div class="bz-flow bz-r" aria-label="Belegfluss">
+        <span class="bz-step">Bestellung</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m0 0-5-5m5 5-5 5"></path></svg>
+        <span class="bz-step">Rechnung automatisch</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m0 0-5-5m5 5-5 5"></path></svg>
+        <span class="bz-step">Zahlungsabgleich</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m0 0-5-5m5 5-5 5"></path></svg>
+        <span class="bz-step">DATEV-Export monatlich</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 05 MARKETING ================= -->
+  <section class="bz-sec" id="marketing">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">05</span>Planbarer Zufluss statt Zufall</h2>
+        <p class="bz-lead">Zwei bezahlte Kanäle mit klaren Rollen: Google fängt Kaufabsicht ab, Instagram erzeugt Ankauf- und Suchauftrags-Leads. Gemessen wird sauber — oder gar nicht.</p>
+      </div>
+
+      <div class="bz-chips bz-r" aria-label="Tracking-Basis">
+        <span><b>GA4</b> + Google Tag Manager</span>
+        <span>Consent Mode <b>v2</b></span>
+        <span>Meta Pixel + <b>Conversions API</b></span>
+        <span>UTM-Konvention je Kanal</span>
+        <span>Lead-Werte je Formulartyp</span>
+      </div>
+
+      <div class="bz-channels">
+        <article class="bz-case bz-channel bz-r">
+          <div class="bz-channel-head">
+            <h3>Google Ads</h3>
+            <span class="bz-budget">~2.700 € / Monat Start</span>
+          </div>
+          <table>
+            <tbody>
+              <tr><td>Brand-Schutz</td><td>150&nbsp;€</td></tr>
+              <tr><td>Modell-Keywords <em>· „submariner kaufen", Referenzen</em></td><td>900&nbsp;€</td></tr>
+              <tr><td>Performance Max mit Produktfeed</td><td>600&nbsp;€</td></tr>
+              <tr><td>Ankauf <em>· „rolex verkaufen"</em></td><td>750&nbsp;€</td></tr>
+              <tr><td>Remarketing</td><td>300&nbsp;€</td></tr>
+            </tbody>
+          </table>
+          <p class="bz-channel-note">Referenznummern-Suchen sind kaufnah und günstig; <strong>Landingpage ist der gefilterte Katalog</strong>, nicht die Startseite.</p>
+        </article>
+        <article class="bz-case bz-channel bz-r">
+          <div class="bz-channel-head">
+            <h3>Instagram / Meta</h3>
+            <span class="bz-budget">~1.800 € / Monat Start</span>
+          </div>
+          <table>
+            <tbody>
+              <tr><td>Ankauf-Leads <em>· Instant Forms, „Bewertung in 24 h"</em></td><td>750&nbsp;€</td></tr>
+              <tr><td>Suchauftrag <em>· „Wir finden Ihre Wunschuhr"</em></td><td>300&nbsp;€</td></tr>
+              <tr><td>Katalog-Retargeting <em>· Dynamic Ads</em></td><td>300&nbsp;€</td></tr>
+              <tr><td>Neuzugänge / Brand <em>· Reels</em></td><td>450&nbsp;€</td></tr>
+            </tbody>
+          </table>
+          <p class="bz-channel-note">Getragen von organischer Basis: <strong>3–5 Reels pro Woche</strong> mit Neuzugängen, Echtheitsprüfung und Sold-Posts.</p>
+        </article>
+      </div>
+
+      <div class="bz-case bz-leadflow bz-r">
+        <strong>Lead-Strecke:</strong>
+        <span>Instant Form</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m0 0-5-5m5 5-5 5"></path></svg>
+        <span>HubSpot-Pipeline</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m0 0-5-5m5 5-5 5"></path></svg>
+        <span>Bestätigung sofort, persönlicher Kontakt</span>
+        <span class="bz-sla">Reaktion &lt; 24 h</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 06 ROADMAP ================= -->
+  <section class="bz-sec bz-sec--right" id="roadmap">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">06</span>Drei Phasen bis zum laufenden Betrieb</h2>
+        <p class="bz-lead">Erst verkaufsfähig und rechtssicher, dann Reichweite, dann Ausbau. Jede Phase hat ein messbares Ziel; keine Baustelle bleibt offen.</p>
+      </div>
+
+      <div class="bz-phases">
+        <article class="bz-phase bz-r">
+          <div class="bz-phase-head">
+            <h3>Verkaufsfähiger Shop</h3>
+            <span class="bz-when">Wochen 01–06</span>
+          </div>
+          <p class="bz-goal">Ziel: Die erste Uhr online verkauft, rechtssicher und sauber abgerechnet.</p>
+          <ul>
+            <li>Shopify-Setup: Plan, Zahlarten, Metafeld-Schema, Rollen mit 2FA</li>
+            <li>Storefront: Produktbilder, Warenkorb &amp; Checkout-Übergabe</li>
+            <li>Formular-Backends für Kontakt und Ankauf inkl. Foto-Upload</li>
+            <li>Rechnungstool mit §&nbsp;25a, abgenommen vom Steuerberater</li>
+            <li>Rechtstexte, Cookie-Consent, GA4-Grundgerüst</li>
+            <li>Versichertes Versandkonzept bis ins Hochpreissegment</li>
+          </ul>
+        </article>
+        <article class="bz-phase bz-r">
+          <div class="bz-phase-head">
+            <h3>Marketing-Maschine</h3>
+            <span class="bz-when">Wochen 07–10</span>
+          </div>
+          <p class="bz-goal">Ziel: Planbarer Zufluss an Käufern und Ankauf-Leads.</p>
+          <ul>
+            <li>Merchant Center &amp; Produktfeed, Google-Ads-Kampagnen live</li>
+            <li>Meta: Pixel + CAPI, Katalog, Lead-Ads-Kampagnen</li>
+            <li>Lead-Automation mit 24-h-Zusage in HubSpot</li>
+            <li>Klaviyo-Flows: Willkommen, Neuzugänge, Abandonment</li>
+            <li>Suchauftrags-Funktion und Verkauft-Archiv</li>
+            <li>Wochen-Dashboard mit KPI-Set</li>
+          </ul>
+        </article>
+        <article class="bz-phase bz-r">
+          <div class="bz-phase-head">
+            <h3>Ausbau nach Bedarf</h3>
+            <span class="bz-when">ab Woche 11</span>
+          </div>
+          <p class="bz-goal">Ziel: Skalieren, was sich in Phase 1–2 bewiesen hat.</p>
+          <ul>
+            <li>Online-Reservierung mit Anzahlung, automatisiert</li>
+            <li>Admin-Dashboard: Lagerwert, Margen, Standtage</li>
+            <li>Chrono24-Anbindung als Zweitkanal</li>
+            <li>Mehrsprachigkeit und internationale Märkte</li>
+            <li>WhatsApp-Broadcast „Neuzugänge" für Top-Kunden</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 07 KOSTEN ================= -->
+  <section class="bz-sec" id="kosten">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">07</span>Was der Betrieb monatlich kostet</h2>
+        <p class="bz-lead">Richtwerte netto pro Monat für die Startphase: Die Fixkosten bleiben klein, das Budget arbeitet in den Anzeigen.</p>
+      </div>
+      <div class="bz-costwrap">
+        <div class="bz-case bz-tablecase bz-r">
+          <table class="bz-table">
+            <thead>
+              <tr><th scope="col">Position</th><th scope="col" class="bz-right">ca. / Monat</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Shopify-Plan <span class="bz-dim">(Grow)</span></td><td class="bz-right">80–110&nbsp;€</td></tr>
+              <tr><td>Hosting Storefront</td><td class="bz-right">~20&nbsp;€</td></tr>
+              <tr><td>Rechnungstool <span class="bz-dim">(easybill/Billbee)</span></td><td class="bz-right">20–60&nbsp;€</td></tr>
+              <tr><td>Cookie-Consent-Plattform</td><td class="bz-right">10–60&nbsp;€</td></tr>
+              <tr><td>E-Mail &amp; CRM <span class="bz-dim">(Klaviyo, HubSpot)</span></td><td class="bz-right">20–95&nbsp;€</td></tr>
+              <tr><td>Weitere Apps <span class="bz-dim">(Flow, Bewertungen, Upload)</span></td><td class="bz-right">20–50&nbsp;€</td></tr>
+              <tr><td><strong>Fixkosten gesamt</strong></td><td class="bz-right">~180–420&nbsp;€</td></tr>
+              <tr><td>Werbebudget Google Ads</td><td class="bz-right">~2.700&nbsp;€</td></tr>
+              <tr><td>Werbebudget Instagram/Meta</td><td class="bz-right">~1.800&nbsp;€</td></tr>
+              <tr class="bz-sum"><td>Gesamt Startphase</td><td class="bz-right">~4.700–4.900&nbsp;€</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="bz-note bz-r">Einmalig hinzu kommen: Entwicklung Phase 1–2, Produktfotografie, Rechtstexte-Paket und das Steuerberatungs-Setup. Preisstände bei Beauftragung prüfen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 08 ENTSCHEIDUNGEN ================= -->
+  <section class="bz-sec bz-sec--center" id="entscheidungen">
+    <div class="bz-wrap">
+      <div class="bz-head bz-r">
+        <h2 class="bz-h2"><span class="bz-no">08</span>Acht Entscheidungen geben den Start frei</h2>
+        <p class="bz-lead">Alles Weitere ist Umsetzung. Zu jeder Frage liegt eine Empfehlung auf dem Tisch — entschieden wird gemeinsam.</p>
+      </div>
+
+      <ol class="bz-decisions">
+        <li class="bz-r"><div><h3>Preistransparenz</h3><p>Alle Preise öffentlich? <strong>Empfehlung: ja</strong>; „auf Anfrage" nur für Ausnahmestücke; Google Shopping braucht Preise.</p></div></li>
+        <li class="bz-r"><div><h3>Abholung &amp; Barzahlung</h3><p>Showroom-Übergabe anbieten? <strong>Empfehlung: ja</strong>; Barzahlung über der GwG-Schwelle von 10.000&nbsp;€ ausschließen.</p></div></li>
+        <li class="bz-r"><div><h3>Steuer-Setup</h3><p>easybill oder Billbee, OSS-Frage, §&nbsp;25a-Formulierungen. <strong>Termin mit dem Steuerberater in Woche&nbsp;1.</strong></p></div></li>
+        <li class="bz-r"><div><h3>Versand Hochpreis</h3><p>Höherversicherung oder Wertlogistik, ab welcher Grenze? <strong>Mit Versicherungsangeboten klären.</strong></p></div></li>
+        <li class="bz-r"><div><h3>Kommission</h3><p>Ab Start oder später? <strong>Empfehlung: Verträge vorbereiten</strong>, aktiv bewerben erst in Phase&nbsp;3.</p></div></li>
+        <li class="bz-r"><div><h3>Internationalisierung</h3><p><strong>Empfehlung: Start in DE/AT</strong>; Erweiterung erst nach steuerlicher Klärung (§&nbsp;25a und OSS schließen sich aus).</p></div></li>
+        <li class="bz-r"><div><h3>Chrono24</h3><p>Parallelvertrieb ja/nein, und mit welcher Preisstrategie gegenüber dem eigenen Shop?</p></div></li>
+        <li class="bz-r"><div><h3>Budgetfreigabe</h3><p>Ads-Startbudgets (~4.500&nbsp;€/Monat) und Produktfotografie freigeben. <strong>Voraussetzung für Phase&nbsp;2.</strong></p></div></li>
+      </ol>
+
+      <div class="bz-cta bz-r">
+        <p>Sind die acht Punkte entschieden, startet Phase&nbsp;1 — und in sechs Wochen verkauft der Shop <em>seine erste Uhr.</em></p>
+        <div class="bz-btns">
+          <a class="bz-btn" href="/pages/kontakt">Abstimmung vereinbaren</a>
+          <a class="bz-btn bz-btn--ghost" href="#modell">Begehung von vorn</a>
+        </div>
+      </div>
+
+      <footer class="bz-foot">
+        <span>BOZIC Watches · Strategiepapier</span>
+        <span>Stand 29.08.2026 · Vertraulich</span>
+      </footer>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('.bz');
+  if (!root) return;
+  document.documentElement.classList.add('bz-js');
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var video = root.querySelector('.bz-hero-media video');
+  if (video) {
+    if (reduced) { video.removeAttribute('autoplay'); video.pause(); }
+    video.addEventListener('error', function () { video.remove(); });
+  }
+
+  var targets = root.querySelectorAll('.bz-r, .bz-rail[data-animate]');
+  if (reduced || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('bz-in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      if (el.classList.contains('bz-rail')) {
+        el.querySelectorAll('li').forEach(function (li, i) {
+          li.style.transitionDelay = (i * 95) + 'ms';
+        });
+      }
+      el.classList.add('bz-in');
+      io.unobserve(el);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+
+  targets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
