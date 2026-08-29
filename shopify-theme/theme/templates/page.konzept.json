@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "konzept": {
-      "type": "konzept",
-      "settings": {}
-    }
-  },
-  "order": ["konzept"]
-}

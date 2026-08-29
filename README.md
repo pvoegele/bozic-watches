@@ -2,20 +2,6 @@
 
 A modern, elegant Next.js showroom frontend for a luxury watch business. Built with Next.js 16, TypeScript, and Tailwind CSS, featuring a Rolex-inspired luxury design.
 
-## 📦 Repository Contents
-
-Beyond the Next.js showroom app (deployed via Vercel), this repository contains:
-
-- [`Konzept.md`](Konzept.md) — Strategiepapier für den Shopify-Handel: Verwaltungsebene, Abrechnung (§25a UStG), Google/Instagram-Kundengewinnung inkl. UTM-Konvention (German)
-- [`shopify-theme/`](shopify-theme/) — **BOZIC Swiss**, a complete installable Shopify OS 2.0 theme (Swiss-typography design) with catalog, product sales-mode logic, Ankauf form, cart, and the Konzept page as its own template — see [`shopify-theme/README.md`](shopify-theme/README.md) for installation
-- [`DESIGN.md`](DESIGN.md) — design-system documentation for the theme (paper/ink/signal-red, Hanken Grotesk, rule-work)
-- [`PRODUCT.md`](PRODUCT.md) — product truth the theme and Konzept page are built from
-
-Both designs are also served statically by the deployed site, so they can be
-viewed without a Shopify store: **`/konzept.html`** (the concept page) and
-**`/shop-vorschau.html`** (the shop screens). They are generated from
-`shopify-theme/preview/` via `python3 shopify-theme/publish-preview.py`.
-
 ## 🎨 Features
 
 - **Luxury Design**: Elegant, minimalist design inspired by premium watch brands
