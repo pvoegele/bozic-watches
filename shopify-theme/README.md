@@ -1,6 +1,6 @@
 # BOZIC Konzept-Seite als Shopify-Theme-Baustein
 
-Die Konzept-Seite („Tresorraum bei Nacht") als eigenständige Shopify-Section —
+Die Konzept-Seite (Schweizer Typografie: Papierweiß, Schwarz, Signalrot) als eigenständige Shopify-Section —
 integrierbar in jedes Online-Store-2.0-Theme (z. B. Dawn), ohne Build-Pipeline
 und ohne App. CSS und JS sind in der Section eingebettet, alle Klassen sind
 mit `bz-` gescoped und kollidieren nicht mit dem Theme.
@@ -32,8 +32,8 @@ Alternativ (Shopify CLI): beide Dateien in ein Theme-Verzeichnis kopieren und
 
 ## Hero-Video einbinden
 
-Die Section startet mit einem gestalteten Platzhalter (Gravur-Uhr im
-Lichtkegel). Sobald das generierte Hero-Video hochgeladen ist:
+Die Section startet mit einem gestalteten Platzhalter (rote Plakat-Scheibe
+mit Zeigern auf 10.08 Uhr). Sobald das generierte Hero-Video hochgeladen ist:
 
 1. Shopify Admin → **Inhalte → Dateien** → Video hochladen (MP4, empfohlen
    ≤ 8 MB; das Kling-Video vor dem Upload ggf. komprimieren).
@@ -41,8 +41,9 @@ Lichtkegel). Sobald das generierte Hero-Video hochgeladen ist:
 3. Theme-Editor → Seite „Konzept" öffnen → Section **Konzept (BOZIC)** →
    Feld **Hero-Video-URL** → URL einfügen → speichern.
 
-Bleibt das Feld leer, trägt der Platzhalter den Hero — die Seite ist auch
-ohne Video vollständig.
+Bleibt das Feld leer, trägt die Scheibe den Hero — die Seite ist auch ohne
+Video vollständig. Das Video wird automatisch kreisförmig maskiert und
+schwarzweiß gefiltert, damit jedes Material stilkonform bleibt.
 
 ## Anpassbare Inhalte
 
@@ -57,11 +58,11 @@ ausführen, damit Vorschau und Section synchron bleiben.
 
 ## Technische Hinweise
 
-- Schriften: Google Fonts (Bodoni Moda, Archivo) — werden per `<link>` geladen;
+- Schriften: Google Fonts (Hanken Grotesk) — wird per `<link>` geladen;
   Fallback-Stacks sind deklariert.
-- Animationen: Scroll-Reveals + sequenzielles Aufleuchten der Waren-Pipeline;
-  ohne JavaScript ist alles sichtbar, `prefers-reduced-motion` deaktiviert
-  Bewegung und pausiert das Video.
+- Animationen: genau zwei Momente — die Hero-Scheibe setzt beim Laden ein,
+  die Waren-Pipeline tickt einmal durch; ohne JavaScript ist alles sichtbar,
+  `prefers-reduced-motion` deaktiviert Bewegung und pausiert das Video.
 - Kein horizontales Scrollen; Tabellen scrollen in eigenen Containern.
-- Die Seite ist eine in sich geschlossene, dunkle Welt und übernimmt bewusst
-  nicht die Farbwelt des restlichen Themes.
+- Die Seite ist eine in sich geschlossene, helle Welt (Papierweiß, Schwarz,
+  Signalrot) und übernimmt bewusst nicht die Farbwelt des restlichen Themes.
