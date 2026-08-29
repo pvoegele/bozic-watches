@@ -95,7 +95,7 @@ liquid = (
     "{% endcomment %}\n"
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&display=swap">\n'
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&display=swap">\n'
     "<style>" + style + "</style>\n\n"
     + body.strip() + "\n\n"
     "<script>" + script + "</script>\n\n"
