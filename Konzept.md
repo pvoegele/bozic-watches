@@ -373,7 +373,54 @@ Leads bekommen **Conversion-Werte** zugewiesen (z. B. Ankauf-Lead 50 €, Suchau
 ### 9.3 Auswertung
 
 - GA4-Standardberichte + ein Looker-Studio-Dashboard (Kap. 13) für den Wochenblick.
-- UTM-Konvention festlegen (source/medium/campaign einheitlich, z. B. `meta / paid_social / ankauf_leads_q4`).
+- Kampagnen-Zuordnung über die verbindliche UTM-Konvention in Kap. 9.4.
+
+### 9.4 UTM-Parameter: verbindliche Konvention
+
+**Grundregeln** (gelten für jeden Link, der auf die Shop-Domain führt):
+
+1. Alles **klein geschrieben**, keine Umlaute (ae/oe/ue), keine Leer- oder Sonderzeichen → Unterstriche.
+2. `utm_source` = Plattform, `utm_medium` = Kanaltyp, `utm_campaign` = `{ziel}_{kampagnentyp}` (Ziele: `verkauf`, `ankauf`, `suchauftrag`, `brand`, `remarketing`), `utm_term` = Zielgruppe/Keyword/Adset, `utm_content` = Anzeige/Creative/Linkposition.
+3. **Keine UTM-Parameter auf internen Links** (zerstört die Attribution der Session).
+4. Jede neue Kampagne wird vor Start in der zentralen UTM-Tabelle (Google Sheet, Single Source of Truth) eingetragen; Werte werden nie nachträglich umbenannt (sonst brechen Zeitreihen).
+
+**Parameterwerte je Kanal:**
+
+| Kanal / Kampagne (Kap. 10/11) | utm_source | utm_medium | utm_campaign | utm_term | utm_content |
+|---|---|---|---|---|---|
+| Google Ads – Brand | `google` | `cpc` | `brand_search` | `{keyword}` | `{creative}` |
+| Google Ads – Verkauf Modelle | `google` | `cpc` | `verkauf_search_modelle` | `{keyword}` | `{creative}` |
+| Google Ads – PMax/Shopping | `google` | `cpc` | `verkauf_pmax_shopping` | – | `{creative}` |
+| Google Ads – Ankauf | `google` | `cpc` | `ankauf_search` | `{keyword}` | `{creative}` |
+| Google Ads – Remarketing/Demand Gen | `google` | `cpc` | `remarketing_demandgen` | – | `{creative}` |
+| Meta – Ankauf-Leads | `{{site_source_name}}` → `fb`/`ig` | `paid_social` | `ankauf_leads` | `{{adset.name}}` | `{{ad.name}}` |
+| Meta – Suchauftrag | `{{site_source_name}}` | `paid_social` | `suchauftrag_leads` | `{{adset.name}}` | `{{ad.name}}` |
+| Meta – Katalog-Retargeting | `{{site_source_name}}` | `paid_social` | `remarketing_katalog` | `{{adset.name}}` | `{{ad.name}}` |
+| Meta – Neuzugänge/Brand | `{{site_source_name}}` | `paid_social` | `brand_neuzugaenge` | `{{adset.name}}` | `{{ad.name}}` |
+| Instagram organisch (Bio-Link) | `instagram` | `social` | `bio` | – | – |
+| Instagram organisch (Story-Link) | `instagram` | `social` | `story_{thema}` | – | – |
+| Klaviyo – Flows | `klaviyo` | `email` | `flow_willkommen` / `flow_neuzugaenge` / `flow_abandonment` | – | Linkposition (z. B. `cta_button`, `produktbild`) |
+| Klaviyo – Newsletter | `klaviyo` | `email` | `newsletter_{jjjjmm}` | – | Linkposition |
+| WhatsApp Broadcast | `whatsapp` | `messaging` | `broadcast_neuzugaenge` | – | – |
+| Google Business Profile | `gbp` | `organic` | `business_profile` | – | – |
+| Chrono24-Profil/Verweise | `chrono24` | `referral` | `profil` | – | – |
+
+**Plattform-Besonderheiten:**
+
+- **Google Ads**: **Auto-Tagging (GCLID) bleibt aktiviert** – es ist die primäre Messung für GA4/Conversions. Die UTMs kommen zusätzlich über das Feld „Finale URL-Suffix" auf Kampagnenebene, mit ValueTrack-Platzhaltern:
+  `utm_source=google&utm_medium=cpc&utm_campaign=verkauf_search_modelle&utm_term={keyword}&utm_content={creative}`
+  (je Kampagne den festen `utm_campaign`-Wert aus der Tabelle eintragen; bei PMax bleibt `{keyword}` leer – unkritisch).
+- **Meta**: UTMs im Feld „URL-Parameter" auf **Anzeigenebene** mit dynamischen Platzhaltern:
+  `utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_term={{adset.name}}&utm_content={{ad.name}}`
+  Voraussetzung: Kampagnen-, Adset- und Anzeigennamen folgen selbst der Namenskonvention (klein, Unterstriche) – sonst landen Leerzeichen in den Reports. Alternativ feste Werte statt `{{campaign.name}}` eintragen.
+- **Lead Ads (Instant Forms)**: Das Formular öffnet ohne Website-Besuch – UTMs greifen dort nicht. Die Kampagnen-Zuordnung der Leads läuft über die Meta-→HubSpot-Integration (Formular-/Kampagnen-ID wird am Kontakt gespeichert); UTMs betreffen nur den Website-Link auf der Danke-Karte des Formulars.
+- **Klaviyo**: automatisches UTM-Tagging in den Einstellungen aktivieren und auf die Werte der Tabelle konfigurieren.
+
+**Beispiel-URL** (Instagram-Ad „Ankauf-Leads", Adset Lookalike, Reel-Creative):
+
+```
+https://www.bozic-watches.de/ankauf?utm_source=ig&utm_medium=paid_social&utm_campaign=ankauf_leads&utm_term=lookalike_ankauf&utm_content=reel_bewertung_24h
+```
 
 ---
 
